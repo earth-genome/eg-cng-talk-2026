@@ -1,7 +1,8 @@
 ---
-title: "Your talk title"
-subtitle: "CNG lightning talk · Bradley Andrick"
-author: "Bradley Andrick"
+title: "From Uploads to Impact: Improving Discovery with a CNG Default"
+subtitle: "CNG Forum · Thu Oct 8, 2026 · 3:19 PM MDT · Ballroom 1"
+author: "Brad Andrick"
+institute: "Earth Genome"
 format:
   revealjs:
     theme: [default, custom.scss]
@@ -22,81 +23,77 @@ title-slide-attributes:
   data-state: no-bars
 ---
 
-::: {#title-howto .howto}
-**Edit me:** set `title`, `subtitle`, and `author` at the top of `index.qmd`. Delete this `.howto` box when you're done.
-
-Note that this slide does not automatically advance... you need to manually advance to the next slide. Subsequent slides will automatically advance.
-:::
-
 ## {#slide-01 background-image="images/pexels-matthew-montrone-230847-2395812.jpg" background-size="cover" background-position="center"}
 
 ::: {.deep-shade}
 :::
 
 ::: {.center-v .deep-copy}
-[Thanks for agreeing to give a lightning talk!]{.statement-sub .a-fade style="--d:0.3s"}
+[Earth Genome]{.statement-sub .a-fade style="--d:0.3s"}
 
-[Your talk]{.statement .a-rise style="--d:2s"}
+[From uploads]{.statement .a-rise style="--d:2s"}
 
-[is going]{.statement .a-rise style="--d:4s"}
+[to impact]{.statement .a-rise style="--d:4.5s"}
 
-[to be]{.statement .a-rise style="--d:6s"}
-
-[great!!!]{.statement .hl .a-rise style="--d:8.5s"}
+[with a CNG default]{.statement .hl .a-rise style="--d:7s"}
 :::
 
 
-## Basics {#slide-02 .hide-title}
+## {#slide-02}
 
-::: {.howto .bottom}
-**Edit me:** replace this text for this slide (and others) with your own by editing the `index.qmd` file. Delete this `.howto`box when you're done.
+In cloud-native geospatial we often talk about **large-scale—even global—datasets**.
+
+Practitioners on the front lines of **climate change and conservation** usually work **more locally**, with data they **already own**.
+
+
+## {#slide-03}
+
+::: {.center-v}
+### Discovery often starts here
+
+**Reference layers** teams upload—not a brand-new global feed.
 :::
 
-This content for all slides can be updated by editing the `index.qmd` file.
 
-It uses the **markdown** markup language, which has a simple syntax for formatting text. The Quarto docs have a good [reference](https://quarto.org/docs/authoring/markdown-syntax.html) for the syntax.
+## {#slide-04}
 
-This content on this slide is simple... just text with minor formatting.
+::: {.center-v}
+![](images/how-it-works.svg){fig-alt="Simple workflow diagram" width=420}
 
+### User-uploaded reference layers
 
-## Images {#slide-03}
-
-You can add images to slides by embedding the image file in the slide content.
-
-![](https://images.pexels.com/photos/11379990/pexels-photo-11379990.jpeg){width=500 fig-align="center"}
-
-## Images - absolute placement {#slide-04}
-
-You can also place multiple images at precise positions with the `.absolute` class and `top`/`left`/`bottom`/`right` offsets (in pixels, on a 1600 × 900 slide).
-
-![](https://images.pexels.com/photos/11379990/pexels-photo-11379990.jpeg){.absolute top=250 left=80 width=380}
-
-![](https://images.pexels.com/photos/11379990/pexels-photo-11379990.jpeg){.absolute top=350 left=180 width=380 fig-alt="Line-art mountain range"}
-
-![](images/results.svg){.absolute bottom=90 right=120 width=360 fig-alt="Line chart trending upward"}
+A real feature in a product practitioners use every day.
+:::
 
 
-## SVG graphics {#slide-05}
+## {#slide-05}
 
-You can add SVG graphics for line art, like the one below, by referencing an SVG file.
+::: {.center-v}
+![](images/fork.svg){fig-alt="Fork in the road" width=360}
 
-![](images/cng-logo.svg)
+### Why **PMTiles** was our default
+
+Portable tiles, HTTP range reads, fits the cloud-native stack we already trust.
+:::
 
 
 ## {#slide-06}
 
 ::: {.center-v}
-![](images/cng-logo.svg){fig-alt="Cloud Native Geospatial Forum logo" width=500}
+### What we chose *not* to build first
 
-### Cloud Native Geospatial community
+A heavier **traditional upload → tile → serve** architecture.
 :::
+
 
 ## {#slide-07}
 
 ::: {.center-v}
-![](images/lightning-talk.svg){fig-alt="Stick figure standing at a podium"}
+![](images/cng-logo.svg){fig-alt="Cloud Native Geospatial Forum logo" width=440}
 
-### Your have 5 minutes to share anything
+### Cloud-native **standards** over custom plumbing
+
+Ecosystem defaults turned a harder engineering path into a **simple, high-value** ship.
 :::
 
 
@@ -104,7 +101,7 @@ You can add SVG graphics for line art, like the one below, by referencing an SVG
 
 ::: {.center-v}
 ::: {.formula}
-[20]{.highlight} slides  ×  [15]{.highlight} seconds  =  **5 minutes**
+[Less time on plumbing]{.highlight}  ·  [More time on impact]{.highlight}
 :::
 :::
 
@@ -114,225 +111,50 @@ You can add SVG graphics for line art, like the one below, by referencing an SVG
 ::: {.center-v}
 ![](images/one-idea.svg){fig-alt="A slide with an arrow pointing to a circle containing the number 1"}
 
-### One slide. One idea. 15 seconds.
+### One slide · one idea · 15 seconds
+
+*(Seven minutes on stage—keep the pacing tight.)*
 :::
 
 
 ## {#slide-10}
 
 ::: {.center-v}
-<!-- Raw <h3>, not ###: a heading first in a div becomes its own nested slide (#/getting-creative) -->
-```{=html}
-<h3><strong>Getting creative</strong></h3>
-```
+![](images/demo-flow.svg){fig-alt="Upload to map flow" width=480}
 
-If you have access to an AI assistant, you can point it at the source code for this presentation and ask it to modify slides.
+### Upload → store → discover on the map
 
-The following slides show some examples of what you can do...
-(Thanks to Alex for sharing these examples!)
+*(Add product screenshots or a short GIF here.)*
 :::
 
 
 ## {#slide-11}
 
-::: {.howto}
-**Separation of concerns:** this slide is split across three files. `index.qmd` holds the content (the SVG and text below), `custom.scss` holds the look and the timed CSS animations (search for "Slide 11"), and `animations.html` holds the JavaScript that runs the clock.
-:::
+### PMTiles in one sentence
 
-```{=html}
-<svg class="photon-trip" viewBox="0 0 1600 900" aria-label="A photon travels from the Sun to Earth in 8 minutes 20 seconds">
-  <defs>
-    <radialGradient id="sun-fill" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#fff3b0"/>
-      <stop offset="0.7" stop-color="#FFD626"/>
-      <stop offset="1" stop-color="#f0a01f"/>
-    </radialGradient>
-    <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="6" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="halo" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="40"/>
-    </filter>
-  </defs>
+A **single file** of vector tiles, read with **HTTP range requests**—no tile server required for the happy path.
 
-  <!-- Sun -->
-  <circle cx="-260" cy="450" r="600" fill="#FFD626" opacity="0.3" filter="url(#halo)"/>
-  <circle cx="-260" cy="450" r="560" fill="url(#sun-fill)"/>
-
-  <!-- Earth -->
-  <circle class="earth-glow" cx="1340" cy="450" r="110" fill="#2126F7" filter="url(#halo)"/>
-  <g stroke="#F2F4F6" stroke-width="4" fill="none">
-    <circle cx="1340" cy="450" r="72" fill="rgba(33,38,247,0.25)"/>
-    <ellipse cx="1340" cy="450" rx="30" ry="72"/>
-    <line x1="1268" y1="450" x2="1412" y2="450"/>
-    <path d="M1280 414 Q1340 426 1400 414"/>
-    <path d="M1280 486 Q1340 474 1400 486"/>
-  </g>
-
-  <!-- Photon -->
-  <path class="photon-trail" pathLength="1000" fill="none" stroke="#FFD626" stroke-width="3" stroke-linecap="round"
-        d="M303 450 q15 -16 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0"/>
-  <path class="photon-head" pathLength="1000" fill="none" stroke="#fff6d8" stroke-width="7" stroke-linecap="round" filter="url(#soft-glow)"
-        d="M303 450 q15 -16 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0"/>
-</svg>
-<p class="trip-clock">0:00</p>
-<p class="trip-caption">Sunlight takes 8 min 20 s to cross 93 million miles</p>
-```
 
 ## {#slide-12}
 
-[Dig deeper: find the dependencies, lean into the taxonomy]{.headline .slide-top}
+::: {.center-v}
+![](images/mountains.svg){fig-alt="Layered landscape" width=520}
 
-```{=html}
-<div class="dep-layout">
-  <svg class="dep-graph" viewBox="0 0 700 360" aria-label="Dependency graph: A depends on B and C, B depends on D">
-    <g stroke="#FFD626" stroke-width="4" fill="none">
-      <path class="dep-edge" style="--d:0.4s" pathLength="1" d="M584 168 L392.7 78"/>
-      <path class="dep-edge" style="--d:1s" pathLength="1" d="M296 60 L126 60"/>
-      <path class="dep-edge" style="--d:1.6s" pathLength="1" d="M584 196 L392.8 280.3"/>
-    </g>
-    <g fill="#FFD626">
-      <path class="a-fade" style="--d:0.85s" d="M380 72 L400.1 71.5 L392.5 87.8 Z"/>
-      <path class="a-fade" style="--d:1.45s" d="M112 60 L130 51 L130 69 Z"/>
-      <path class="a-fade" style="--d:2.05s" d="M380 286 L392.8 270.5 L400.1 287 Z"/>
-    </g>
-    <g stroke="#FFD626" stroke-width="4" fill="rgba(255,214,38,0.08)">
-      <circle cx="70" cy="60" r="42"/>
-      <circle cx="338" cy="60" r="42"/>
-      <circle cx="624" cy="182" r="42"/>
-      <circle cx="338" cy="300" r="42"/>
-    </g>
-    <g class="dep-labels" text-anchor="middle">
-      <text x="70" y="72">D</text>
-      <text x="338" y="72">B</text>
-      <text x="624" y="194">A</text>
-      <text x="338" y="312">C</text>
-    </g>
-  </svg>
-  <ul class="families">
-    <li class="a-rise" style="--c:#4a7fd8; --d:2.2s"><b>F1</b> Physical and biological foundations</li>
-    <li class="a-rise" style="--c:#e07040; --d:2.6s"><b>F2</b> Knowledge, evidence, and methods</li>
-    <li class="a-rise" style="--c:#5bb58a; --d:3.0s"><b>F3</b> People, skills, and work</li>
-    <li class="a-rise" style="--c:#e3a83a; --d:3.4s"><b>F4</b> Technology, components, and tools</li>
-    <li class="a-rise" style="--c:#e088a8; --d:3.8s"><b>F5</b> Infrastructure and operational services</li>
-    <li class="a-rise" style="--c:#4f9a35; --d:4.2s"><b>F6</b> Organizations, institutions, and governance</li>
-    <li class="a-rise" style="--c:#7a6ad6; --d:4.6s"><b>F7</b> Resources, production, and economic support</li>
-    <li class="a-rise" style="--c:#e0595a; --d:5.0s"><b>F8</b> Relationships, communication, and adoption</li>
-  </ul>
-</div>
-```
+### Smaller scope, same pattern
+
+Local reference layers teach the same cloud-native habits as global delivery—at a scale teams feel immediately.
+:::
 
 
 ## {#slide-13}
 
-```{=html}
-<svg class="cartwheels" viewBox="0 0 1600 900" aria-label="Stick figures cartwheeling across the screen in both directions, near and far">
-<g stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
-<!-- Far layer first so nearer figures draw on top -->
-  <g class="cw-move" style="--x0:1760px; --x1:-160px; --cw:10.47s; --cd:-9.87s">
-    <g transform="translate(0 345) scale(0.45)" stroke="#8B929B">
-      <g class="cw-spin" style="--spin:-1956deg">
-        <circle cx="0" cy="-97" r="22" fill="#1D232B"/>
-        <line x1="0" y1="-75" x2="0" y2="25"/>
-        <polyline points="-75,-110 0,-55 75,-110"/>
-        <polyline points="-62,110 0,25 62,110"/>
-      </g>
-    </g>
-  </g>
-  <g class="cw-move" style="--x0:-160px; --x1:1760px; --cw:10.47s; --cd:-0.30s">
-    <g transform="translate(0 351) scale(0.45)" stroke="#8B929B">
-      <g class="cw-spin" style="--spin:1956deg">
-        <circle cx="0" cy="-97" r="22" fill="#1D232B"/>
-        <line x1="0" y1="-75" x2="0" y2="25"/>
-        <polyline points="-75,-110 0,-55 75,-110"/>
-        <polyline points="-62,110 0,25 62,110"/>
-      </g>
-    </g>
-  </g>
-  <g class="cw-move" style="--x0:1760px; --x1:-160px; --cw:11.35s; --cd:-7.36s">
-    <g transform="translate(0 352) scale(0.45)" stroke="#8B929B">
-      <g class="cw-spin" style="--spin:-1956deg">
-        <circle cx="0" cy="-97" r="22" fill="#1D232B"/>
-        <line x1="0" y1="-75" x2="0" y2="25"/>
-        <polyline points="-75,-110 0,-55 75,-110"/>
-        <polyline points="-62,110 0,25 62,110"/>
-      </g>
-    </g>
-  </g>
-  <g class="cw-move" style="--x0:-160px; --x1:1760px; --cw:10.02s; --cd:-4.70s">
-    <g transform="translate(0 311) scale(0.45)" stroke="#8B929B">
-      <g class="cw-spin" style="--spin:1956deg">
-        <circle cx="0" cy="-97" r="22" fill="#1D232B"/>
-        <line x1="0" y1="-75" x2="0" y2="25"/>
-        <polyline points="-75,-110 0,-55 75,-110"/>
-        <polyline points="-62,110 0,25 62,110"/>
-      </g>
-    </g>
-  </g>
-  <g class="cw-move" style="--x0:-160px; --x1:1760px; --cw:7.12s; --cd:-0.09s">
-    <g transform="translate(0 504) scale(0.7)" stroke="#BCC1C8">
-      <g class="cw-spin" style="--spin:1257deg">
-        <circle cx="0" cy="-97" r="22" fill="#1D232B"/>
-        <line x1="0" y1="-75" x2="0" y2="25"/>
-        <polyline points="-75,-110 0,-55 75,-110"/>
-        <polyline points="-62,110 0,25 62,110"/>
-      </g>
-    </g>
-  </g>
-  <g class="cw-move" style="--x0:1760px; --x1:-160px; --cw:7.89s; --cd:-7.23s">
-    <g transform="translate(0 489) scale(0.7)" stroke="#BCC1C8">
-      <g class="cw-spin" style="--spin:-1257deg">
-        <circle cx="0" cy="-97" r="22" fill="#1D232B"/>
-        <line x1="0" y1="-75" x2="0" y2="25"/>
-        <polyline points="-75,-110 0,-55 75,-110"/>
-        <polyline points="-62,110 0,25 62,110"/>
-      </g>
-    </g>
-  </g>
-  <g class="cw-move" style="--x0:-160px; --x1:1760px; --cw:6.69s; --cd:-5.33s">
-    <g transform="translate(0 483) scale(0.7)" stroke="#BCC1C8">
-      <g class="cw-spin" style="--spin:1257deg">
-        <circle cx="0" cy="-97" r="22" fill="#1D232B"/>
-        <line x1="0" y1="-75" x2="0" y2="25"/>
-        <polyline points="-75,-110 0,-55 75,-110"/>
-        <polyline points="-62,110 0,25 62,110"/>
-      </g>
-    </g>
-  </g>
-  <g class="cw-move" style="--x0:-160px; --x1:1760px; --cw:4.88s; --cd:-0.01s">
-    <g transform="translate(0 681) scale(1.0)" stroke="#F2F4F6">
-      <g class="cw-spin" style="--spin:880deg">
-        <circle cx="0" cy="-97" r="22" fill="#1D232B"/>
-        <line x1="0" y1="-75" x2="0" y2="25"/>
-        <polyline points="-75,-110 0,-55 75,-110"/>
-        <polyline points="-62,110 0,25 62,110"/>
-      </g>
-    </g>
-  </g>
-  <g class="cw-move" style="--x0:1760px; --x1:-160px; --cw:4.55s; --cd:-0.98s">
-    <g transform="translate(0 685) scale(1.0)" stroke="#F2F4F6">
-      <g class="cw-spin" style="--spin:-880deg">
-        <circle cx="0" cy="-97" r="22" fill="#1D232B"/>
-        <line x1="0" y1="-75" x2="0" y2="25"/>
-        <polyline points="-75,-110 0,-55 75,-110"/>
-        <polyline points="-62,110 0,25 62,110"/>
-      </g>
-    </g>
-  </g>
-  <g class="cw-move" style="--x0:-160px; --x1:1760px; --cw:4.41s; --cd:-1.28s">
-    <g transform="translate(0 719) scale(1.0)" stroke="#F2F4F6">
-      <g class="cw-spin" style="--spin:880deg">
-        <circle cx="0" cy="-97" r="22" fill="#1D232B"/>
-        <line x1="0" y1="-75" x2="0" y2="25"/>
-        <polyline points="-75,-110 0,-55 75,-110"/>
-        <polyline points="-62,110 0,25 62,110"/>
-      </g>
-    </g>
-  </g>
-</g>
-</svg>
-```
+::: {.center-v}
+### Stand on ecosystem defaults
+
+**PMTiles · object storage · clients that already speak the spec**
+
+Reuse before you invent.
+:::
 
 
 ## {#slide-14}
@@ -340,7 +162,7 @@ The following slides show some examples of what you can do...
 ::: {.center-v}
 ![](images/sharing-ideas.svg){fig-alt="Stick figure pointing up at a glowing lightbulb"}
 
-### Sharing sparks new ideas
+### Better discovery → better decisions on the ground
 :::
 
 
@@ -350,9 +172,9 @@ The following slides show some examples of what you can do...
 ::: {.center-v}
 ![](images/problem.svg){fig-alt="Stick figure surrounded by question marks"}
 
-### **[The problem]** {.muted}
+### **The problem**
 
-[What's broken or missing?]{.muted}
+Teams already have critical context in **local layers**—but it is hard to **find and use** next to everything else in the platform.
 :::
 
 
@@ -361,9 +183,9 @@ The following slides show some examples of what you can do...
 ::: {.center-v}
 ![](images/big-idea.svg){fig-alt="Glowing lightbulb"}
 
-### **[The big idea]** {.muted}
+### **The big idea**
 
-[Your core insight in one sentence]{.muted}
+Treat **PMTiles** as the default upload format and skip the heavy custom tiling pipeline.
 :::
 
 
@@ -372,9 +194,9 @@ The following slides show some examples of what you can do...
 ::: {.center-v}
 ![](images/live-demo.svg){fig-alt="Browser window with placeholder text lines"}
 
-### **[Live demo]** {.muted}
+### **Live demo**
 
-[Screenshot, GIF, or live walkthrough]{.muted}
+Walk through **uploading a reference layer** and seeing it in discovery workflows.
 :::
 
 
@@ -383,19 +205,21 @@ The following slides show some examples of what you can do...
 ::: {.center-v}
 ![](images/results.svg){fig-alt="Line chart trending upward"}
 
-### **[Results]** {.muted}
+### **Results**
 
-[One metric that got measurably better]{.muted}
+**Faster delivery**, less ops surface area, and practitioners spending time on **impact**—not plumbing.
 :::
 
 
 ## {#slide-19}
 
- Links
+**Links**
+
+[earthgenome.org](https://earthgenome.org)
+
+[PMTiles](https://docs.protomaps.com/pmtiles/)
 
 [cloudnativegeo.org](https://cloudnativegeo.org)
-
-[This template on GitHub](https://github.com/cloudnativegeo/lightning-talk-quarto-TEMPLATE)
 
 
 ## {#slide-20}
@@ -403,8 +227,8 @@ The following slides show some examples of what you can do...
 ```{=html}
 <canvas class="grow-network"></canvas>
 <div class="closing-copy">
-  <p class="statement a-rise" style="--d:7s">Thanks for sharing.</p>
-  <p class="statement-sub hl a-rise" style="--d:9.5s">Wishing you all the best on your presentation.</p>
+  <p class="statement a-rise" style="--d:7s">Less plumbing. More impact.</p>
+  <p class="statement-sub hl a-rise" style="--d:9.5s">Brad Andrick · Earth Genome</p>
 </div>
 ```
 
