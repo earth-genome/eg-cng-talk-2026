@@ -1,8 +1,10 @@
-# CNG Lightning Talk Template (Quarto)
+# eg-cng-talk-2026 — Bradley Andrick
 
-A [Quarto RevealJS](https://quarto.org/docs/presentations/revealjs/) template for 5-minute [Cloud Native Geospatial Forum](https://cloudnativegeo.org) lightning talks. Slides auto-advance every 15 seconds. 20 slides × 15 seconds = 5 minutes.
+CNG Forum plenary lightning talk deck (Thursday, October 8, 2:30pm). Built from the [CNG Quarto/Reveal.js template](https://github.com/cloudnativegeo/lightning-talk-quarto-TEMPLATE).
 
-**Live demo:** [https://cloudnativegeo.github.io/lightning-talk-quarto-TEMPLATE/](https://cloudnativegeo.github.io/lightning-talk-quarto-TEMPLATE/)
+Slides auto-advance every 15 seconds (20 slides × 15 seconds = 5 minutes).
+
+**Published deck:** [https://earth-genome.github.io/eg-cng-talk-2026/](https://earth-genome.github.io/eg-cng-talk-2026/) (after GitHub Pages is enabled; see below)
 
 ---
 
