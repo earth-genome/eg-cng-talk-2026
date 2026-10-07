@@ -1,0 +1,156 @@
+[
+ {
+  "file": "images/bg/01-underwhelmed.avif",
+  "title": "Our mission",
+  "creator": "Earth Genome",
+  "license": "internal",
+  "source": "https://cdn.prod.website-files.com/642c1e823b4d441963f3fe5e/6878e5b4303029e1d7448c0d_our%20mission.avif"
+ },
+ {
+  "file": "images/bg/02-hi-brad.jpg",
+  "title": "View Rocky Mountains, Colorado USA",
+  "creator": "Carol M Highsmith",
+  "license": "cc0",
+  "source": "https://www.rawpixel.com/image/434345/free-photo-image-landscape-america-americas-public-domain"
+ },
+ {
+  "file": "images/bg/03-earth-genome.png",
+  "title": "River meander satellite imagery",
+  "creator": "Earth Genome",
+  "license": "internal",
+  "source": "Talk asset"
+ },
+ {
+  "file": "images/bg/04-small-team.jpg",
+  "title": "Earth Genome team",
+  "creator": "Earth Genome",
+  "license": "internal",
+  "source": "Talk asset (grayscale)"
+ },
+ {
+  "file": "images/time-to-impact.png",
+  "title": "Days to Create chart",
+  "creator": "Earth Genome",
+  "license": "internal",
+  "source": "Talk asset"
+ },
+  {
+    "file": "images/bg/06-earth-index.jpg",
+    "title": "Earth Index label and search visualization",
+    "creator": "Earth Genome",
+    "license": "internal",
+    "source": "Talk asset"
+  },
+  {
+    "file": "images/how-it-came-to-be.jpg",
+    "title": "History collage: river imagery to Amazon Mining Watch (navy)",
+    "creator": "Earth Genome",
+    "license": "internal",
+    "source": "Earth Index Demo, Sept 2026 (Google Slides)"
+  },
+  {
+    "file": "images/how-it-came-to-be-right.jpg",
+    "title": "Earth Index product evolution collage",
+    "creator": "Earth Genome",
+    "license": "internal",
+    "source": "Talk asset"
+  },
+ {
+  "file": "images/bg/08-under-the-hood.jpg",
+  "title": "Vintage US car engine",
+  "creator": "Markus Spiske",
+  "license": "cc0",
+  "source": "https://www.rawpixel.com/image/560250/vintage-car-engine"
+ },
+ {
+  "file": "images/ei-embeddings.gif",
+  "title": "Earth Index embeddings visualization",
+  "creator": "Earth Genome",
+  "license": "internal",
+  "source": "https://cdn.prod.website-files.com/649def020aa2a4c8b8fddb7c/6a5a88f87c2f83f2c2fa8cfc_ei-embeddings.gif"
+ },
+ {
+  "file": "images/bg/10-local-files.jpg",
+  "title": "Map Travel",
+  "creator": "Louis Blythe",
+  "license": "cc0",
+  "source": "https://stocksnap.io/photo/map-travel-Z48KE2LGC3"
+ },
+ {
+  "file": "images/bg/11-the-need.jpg",
+  "title": "Writing Drawing",
+  "creator": "Startup Stock Photos",
+  "license": "cc0",
+  "source": "https://stocksnap.io/photo/writing-drawing-Y2P39NGLLO"
+ },
+ {
+  "file": "images/bg/12-pmtiles.jpg",
+  "title": "Cardboard Box",
+  "creator": "Matt Bango",
+  "license": "cc0",
+  "source": "https://stocksnap.io/photo/cardboard-box-USP4WCYPBW"
+ },
+ {
+  "file": "images/bg/13-why-pmtiles.jpg",
+  "title": null,
+  "creator": null,
+  "license": "cc0",
+  "source": "https://www.rawpixel.com/image/5949687/free-public-domain-cc0-photo"
+ },
+ {
+  "file": "images/bg/14-tbd.jpg",
+  "title": "Close question mark drawn chalk",
+  "creator": null,
+  "license": "cc0",
+  "source": "https://www.rawpixel.com/image/5917647/image-public-domain-free-question-mark"
+ },
+ {
+  "file": "images/bg/15-saved-time.jpg",
+  "title": "Black white pipe",
+  "creator": null,
+  "license": "cc0",
+  "source": "https://www.rawpixel.com/image/6020029/photo-image-public-domain-house-wall"
+ },
+ {
+  "file": "images/bg/16-just-works.jpg",
+  "title": "Light Switch",
+  "creator": "Matt Bango",
+  "license": "cc0",
+  "source": "https://stocksnap.io/photo/light-switch-GCFFRMA9VR"
+ },
+ {
+  "file": "images/bg/17-open-access.jpg",
+  "title": null,
+  "creator": null,
+  "license": "cc0",
+  "source": "https://www.rawpixel.com/image/5946971/free-public-domain-cc0-photo"
+ },
+ {
+  "file": "images/search-for-stuff.png",
+  "title": "Earth Index — Search for Stuff",
+  "creator": "Earth Genome",
+  "license": "internal",
+  "source": "Product screenshot"
+ },
+ {
+  "file": "images/bg/19-chat.jpg",
+  "title": "Coffee Cup",
+  "creator": "Jeffrey Betts",
+  "license": "cc0",
+  "source": "https://stocksnap.io/photo/coffee-cup-VS5KJKKI33"
+ },
+ {
+  "file": "images/bg/20-thank-you.jpg",
+  "title": "Crowd People",
+  "creator": "Anthony Delanoix",
+  "license": "cc0",
+  "source": "https://stocksnap.io/photo/crowd-people-IUJP9OI22I"
+ },
+ {
+  "file": "images/earth-index-logo.png",
+  "title": "Earth Index logo",
+  "creator": "Earth Genome",
+  "license": "internal",
+  "source": "Talk asset"
+ }
+]

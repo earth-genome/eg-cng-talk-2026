@@ -41,14 +41,14 @@
 </script>
 
 <script>
-// Slide 20: the A-B-C-D dependency graph from slide 12 keeps growing.
+// Slide 19: a dependency graph keeps growing behind the closing line.
 // Starts when the slide becomes current and stops when the deck moves on,
 // so it replays on every visit and stays in step with the CSS-timed text.
 (function () {
   'use strict';
 
   var TAU = Math.PI * 2;
-  var YELLOW = '#FFD626';
+  var YELLOW = '#ffc000';
   var FAMILY_COLORS = ['#4a7fd8', '#e07040', '#5bb58a', '#e3a83a', '#e088a8', '#4f9a35', '#7a6ad6', '#e0595a'];
 
   function mulberry32(a) {
@@ -186,7 +186,7 @@
         ctx.moveTo(sx(nodes[l[0]].x), sy(nodes[l[0]].y));
         ctx.lineTo(sx(nodes[l[1]].x), sy(nodes[l[1]].y));
       });
-      ctx.strokeStyle = 'rgba(242,244,246,0.18)';
+      ctx.strokeStyle = 'rgba(250,250,250,0.18)';
       ctx.lineWidth = 1.2;
       ctx.stroke();
 
@@ -197,13 +197,13 @@
           r = Math.max(11, 22 * cam.s / 2);
           ctx.beginPath();
           ctx.arc(x, y, r, 0, TAU);
-          ctx.fillStyle = 'rgba(255,214,38,0.08)';
+          ctx.fillStyle = 'rgba(255,192,0,0.08)';
           ctx.fill();
           ctx.strokeStyle = YELLOW;
           ctx.lineWidth = 3;
           ctx.stroke();
-          ctx.fillStyle = '#F2F4F6';
-          ctx.font = '700 ' + Math.round(r) + 'px "iA Writer Quattro S", sans-serif';
+          ctx.fillStyle = '#fafafa';
+          ctx.font = '600 ' + Math.round(r) + 'px "Tiempos Headline", "Lora", serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(nd.label, x, y + 1);
@@ -212,7 +212,7 @@
           if (grow < 1) {
             ctx.beginPath();
             ctx.arc(x, y, r + (1 - grow) * 16, 0, TAU);
-            ctx.strokeStyle = 'rgba(242,244,246,' + (0.5 * (1 - grow)) + ')';
+            ctx.strokeStyle = 'rgba(250,250,250,' + (0.5 * (1 - grow)) + ')';
             ctx.lineWidth = 1.5;
             ctx.stroke();
           }
@@ -257,8 +257,8 @@
   }
 
   function init() {
-    var slide = document.getElementById('slide-20');
-    if (!slide) return;
+    var slide = document.getElementById('slide-19');
+    if (!slide || !slide.querySelector('canvas.grow-network')) return;
     var scene = growNetwork(slide), running = false;
 
     function show(current) {

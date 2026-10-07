@@ -1,0 +1,6 @@
+{
+  "quarto.preview.port": 4200,
+  "quarto.preview.host": "127.0.0.1",
+  "quarto.render.previewType": "external",
+  "quarto.render.renderOnSave": true
+}

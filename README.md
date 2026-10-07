@@ -19,9 +19,17 @@ In cloud-native geospatial we often focus on large-scale, even global datasets. 
 
 ## Local preview
 
+Use Quarto’s **preview server** (it watches `index.qmd`, `custom.scss`, `animations.html`, and `images/`, then reloads the browser). Opening `docs/index.html` directly will **not** hot refresh.
+
 ```bash
 uv sync
-uv run quarto preview
+./scripts/preview.sh
 ```
 
-Use `http://localhost:4200/?autoSlide=0#/slide-01` while editing so slides do not auto-advance.
+`preview.sh` runs a small Python watcher so edits to **`custom.scss`** (and images) trigger a re-render.
+
+Open **http://127.0.0.1:4200/** in **Chrome or Safari** and leave that tab open. Do not open `docs/index.html` directly.
+
+After each save you should see **`pandoc`** in the terminal, then the browser reloads within ~1–2 seconds.
+
+While writing, use `?autoSlide=0`, e.g. `http://127.0.0.1:4200/?autoSlide=0#/slide-01`.

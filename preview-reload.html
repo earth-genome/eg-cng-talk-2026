@@ -1,0 +1,71 @@
+<script>
+// Dev reload: Quarto WebSocket + stylesheet/HTML polling (SCSS edits, Cursor browser, etc.).
+(function () {
+  'use strict';
+
+  var host = window.location.hostname;
+  if (host !== '127.0.0.1' && host !== 'localhost') return;
+
+  function wsPath() {
+    var path = window.location.pathname || '/';
+    return /\/$/.test(path) ? path : path + '/';
+  }
+
+  function connectWs() {
+    var proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    var ws = new WebSocket(proto + '//' + window.location.host + wsPath());
+    ws.onmessage = function (e) {
+      if (e.data && String(e.data).indexOf('reload') === 0) {
+        window.location.reload();
+      }
+    };
+    ws.onclose = function () {
+      window.setTimeout(function () { window.location.reload(); }, 400);
+    };
+  }
+
+  try {
+    connectWs();
+  } catch (err) {
+    /* polling below */
+  }
+
+  var lastSig = null;
+
+  function buildSig(html) {
+    var sig = String(html.length);
+    var theme = html.match(/quarto-[a-f0-9]+\.css/);
+    if (theme) sig += ':' + theme[0];
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      var href = links[i].href;
+      if (/quarto|reveal|theme/.test(href)) sig += '|' + href;
+    }
+    return sig;
+  }
+
+  function poll() {
+    if (document.hidden) return;
+    var path = window.location.pathname || '/';
+    var url = path + (path.indexOf('?') >= 0 ? '&' : '?') + '__dev=' + Date.now();
+    fetch(url, { cache: 'no-store', credentials: 'same-origin' })
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        var sig = buildSig(html);
+        if (lastSig && sig !== lastSig) {
+          window.location.reload();
+          return;
+        }
+        lastSig = sig;
+      })
+      .catch(function () {});
+  }
+
+  window.setInterval(poll, 1000);
+  window.setTimeout(poll, 800);
+  window.addEventListener('focus', poll);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) poll();
+  });
+})();
+</script>
