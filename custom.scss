@@ -1917,8 +1917,41 @@ $presentation-h2-font-size: 1.8em;
   100% { transform: translate(10px, 8px) rotate(var(--rot)); }
 }
 
+.reveal #slide-19 {
+  overflow: visible !important;
+}
+
 .reveal #slide-19 .center-v {
   z-index: 1;
+  overflow: visible;
+}
+
+.reveal #slide-19 .center-v .big-words {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 0;
+  overflow: visible;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 175%;
+    height: 320%;
+    translate: -50% -50%;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse 100% 100% at 50% 50%,
+      rgba($eg-yellow, 0.2) 0%,
+      rgba($eg-yellow, 0.07) 32%,
+      rgba($eg-yellow, 0) 62%
+    );
+    filter: blur(16px);
+    pointer-events: none;
+  }
 }
 
 .reveal #slide-15 .slide-15-photo-wrap {
