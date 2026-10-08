@@ -1,0 +1,2800 @@
+/*-- scss:defaults --*/
+
+// Earth Genome palette, from earthgenome.org (:root vars) and the EG Google Slides template
+$eg-navy: #0e2129; // --var-grey-1000, slide background
+$eg-navy-900: #25363d; // --var-grey-900, raised surfaces on navy
+$eg-navy-800: #3b4a50;
+$eg-grey-500: #7f888b;
+$eg-grey-200: #c2c5c5;
+$eg-base: #efeeec; // --var-base, warm off-white panels
+$eg-white: #fafafa; // --var-white-smoke, text on navy
+$eg-yellow: #ffc000; // --var-yellow-1000, accent / rules / bars
+$eg-yellow-800: #ffd633;
+$eg-green: #457759; // --green-1000
+$eg-green-700: #789b85;
+$eg-green-200: #cdd6cf;
+
+$eg-font-sans: "Geist", "GeistVF", system-ui, sans-serif;
+$eg-font-serif: "Tiempos Headline", "Lora", Georgia, serif;
+$eg-font-mono: "Geist Mono", ui-monospace, monospace;
+
+$font-family-sans-serif: $eg-font-sans;
+$font-family-monospace: $eg-font-mono;
+$body-bg: $eg-navy;
+$body-color: $eg-white;
+$link-color: $eg-white;
+$selection-bg: $eg-yellow;
+$presentation-slide-text-align: left;
+$presentation-heading-font: $eg-font-serif;
+$presentation-heading-color: $eg-white;
+$presentation-heading-font-weight: 600;
+$presentation-heading-letter-spacing: 0;
+$presentation-h1-font-size: 2.5em;
+$presentation-h2-font-size: 1.8em;
+
+/*-- scss:rules --*/
+
+/* Brand fonts are referenced from Earth Genome's Webflow CDN (CORS-enabled).
+   Tiempos Headline is licensed: reference it by URL, never commit the files.
+   Lora (the Slides template serif) and Geist Mono load from Google Fonts in index.qmd. */
+@font-face {
+  font-family: "Geist";
+  src: url("https://cdn.prod.website-files.com/642c1e823b4d441963f3fe5e/667c4485233d241c5c69a4f7_GeistVF.woff2")
+    format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tiempos Headline";
+  src: url("https://cdn.prod.website-files.com/642c1e823b4d441963f3fe5e/66953e7dd5116c82c47d2723_tiempos-headline-semibold.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+.reveal {
+  color: $eg-white;
+  font-family: $eg-font-sans;
+  letter-spacing: -0.0185em;
+}
+
+/* Tiempos only ships a 600 weight; keep bold at 600 so the browser doesn't fake a heavier one */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  color: $eg-white;
+  font-family: $eg-font-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.reveal :is(h1, h2, h3, h4) strong {
+  font-weight: 600;
+}
+
+.reveal ::selection {
+  background: $eg-yellow;
+  color: $eg-navy;
+}
+
+.reveal a {
+  color: $eg-white;
+  text-decoration: underline;
+  text-decoration-color: $eg-yellow;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.reveal a:hover {
+  color: $eg-yellow;
+}
+
+/* Progress bar doubles as the template's full-width yellow footer stripe */
+.reveal .progress {
+  height: 6px;
+  color: $eg-yellow;
+  background-color: rgba($eg-yellow, 0.3);
+}
+
+.reveal .slide-number {
+  display: none !important;
+}
+
+.reveal .footer {
+  color: rgba($eg-white, 0.45);
+  font-size: 0.5em;
+}
+
+.slide-logo {
+  display: none !important;
+  max-height: 44px !important;
+  opacity: 1;
+}
+
+.big-number {
+  font-size: 7rem;
+  color: $eg-yellow;
+  font-family: $eg-font-serif;
+  font-weight: 600;
+  line-height: 1;
+  display: block;
+  text-align: center;
+}
+
+/* Headings inside .center-v become nested <section>s (vertical sub-slides) in Reveal;
+   use a styled paragraph such as .ph-label instead */
+.center-v {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+/* Hide the empty h2 that Quarto generates for title-less slides */
+.reveal .slides section > h2:empty {
+  display: none;
+}
+
+.reveal .muted {
+  color: rgba($eg-white, 0.55) !important;
+  font-size: 0.85em;
+}
+
+.yellow {
+  color: $eg-yellow;
+}
+
+/* eyebrow: small mono label above headings */
+.reveal .eyebrow {
+  font-family: $eg-font-mono;
+  font-size: 0.62em;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $eg-yellow;
+}
+
+/* inline highlight: EG yellow */
+.reveal .hl {
+  color: $eg-yellow;
+}
+
+/* .rule: short yellow bar under a heading (template section-title style) */
+.reveal .rule::after {
+  content: "";
+  display: block;
+  width: min(100%, 6em);
+  height: 0.12em;
+  min-height: 5px;
+  margin: 0.35em 0 0;
+  background: $eg-yellow;
+}
+
+.reveal .center-v .rule::after,
+.reveal .split .rule::after,
+.reveal .rule.centered::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .bar-left: yellow vertical bar beside a statement (template question style) */
+.reveal .bar-left {
+  max-width: 1250px;
+  border-left: 8px solid $eg-yellow;
+  padding-left: 0.7em;
+  text-align: left;
+}
+
+/* .kicker: "Label | detail" heading with a yellow divider */
+.reveal .kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: $eg-font-serif;
+  font-weight: 600;
+}
+
+.reveal .kicker > :last-child {
+  border-left: 6px solid $eg-yellow;
+  padding-left: 0.5em;
+  font-weight: 400;
+  font-family: $eg-font-sans;
+  color: rgba($eg-white, 0.85);
+}
+
+/* .split: two-column slide; add .panel-light to one column for the off-white template panel.
+   The panel's backdrop bleeds past the slide edges so it reaches the viewport. */
+.reveal .split {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: var(--split, 1fr 1fr);
+}
+
+.reveal .split > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 60px;
+}
+
+.reveal .panel-light {
+  position: relative;
+  isolation: isolate;
+  color: $eg-navy;
+}
+
+.reveal .panel-light::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -600px -1200px -600px 0;
+  background: $eg-base;
+}
+
+.reveal .panel-light:first-child::before {
+  inset: -600px 0 -600px -1200px;
+}
+
+.reveal .panel-light :is(h1, h2, h3, h4, a) {
+  color: $eg-navy;
+}
+
+.reveal .panel-light .hl,
+.reveal .panel-light .yellow {
+  color: #b88a00;
+}
+
+/* .card: off-white content card on navy (template use-case slides) */
+.reveal .card {
+  background: $eg-base;
+  color: $eg-navy;
+  border-radius: 10px;
+  padding: 0.7em 0.9em;
+  font-size: 0.7em;
+  text-align: left;
+}
+
+.reveal .card :is(h3, h4) {
+  color: $eg-navy;
+  margin: 0 0 0.3em;
+}
+
+.reveal .card.accent {
+  background: $eg-green-200;
+}
+
+.formula {
+  font-size: 3.5rem;
+  color: $eg-white;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.formula .highlight {
+  color: $eg-yellow;
+  font-family: $eg-font-serif;
+  font-weight: 600;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.icon-row {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 2rem;
+}
+
+/* code / mono */
+.reveal code,
+.reveal pre,
+.reveal .mono {
+  font-family: $eg-font-mono;
+}
+
+.reveal :not(pre) > code {
+  background: rgba($eg-white, 0.1);
+  color: inherit;
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+/* Title slide — Quarto puts .quarto-title-block on the <section>, not a wrapper div.
+   Do not use position:absolute + inset:0 here: that sizes to the whole .slides stack,
+   so flex centering lands horizontally off the visible slide. */
+.reveal #slide-title.quarto-title-block,
+.reveal #title-slide.quarto-title-block {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10% 80px 0;
+  text-align: center;
+}
+
+.reveal #slide-title.quarto-title-block h1.title,
+.reveal #title-slide.quarto-title-block h1.title {
+  display: block;
+  width: fit-content;
+  max-width: 92%;
+  margin: 0 auto;
+  padding: 0;
+  border: none !important;
+  font-family: $eg-font-serif;
+  font-size: 2.2em;
+  line-height: 1.15;
+  text-decoration: none;
+}
+
+.reveal #slide-title.quarto-title-block h1.title::after,
+.reveal #title-slide.quarto-title-block h1.title::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 6px;
+  margin-top: 0.12em;
+  background: $eg-yellow;
+}
+
+.reveal #slide-title.quarto-title-block p.subtitle,
+.reveal #title-slide.quarto-title-block p.subtitle {
+  width: 100%;
+  margin: 1.35em auto 0;
+  max-width: 92%;
+  padding: 0;
+  color: $eg-white;
+  font-size: 1em;
+  line-height: 1.45;
+  text-align: center;
+}
+
+/* Quarto inserts a <br> between subtitle spans; it adds a full line of gap */
+.reveal #slide-title.quarto-title-block p.subtitle > br,
+.reveal #title-slide.quarto-title-block p.subtitle > br {
+  display: none;
+}
+
+.reveal #slide-title .subtitle-tagline,
+.reveal #title-slide .subtitle-tagline {
+  display: block;
+  font-family: $eg-font-serif;
+  font-size: 1.15em;
+  font-weight: 600;
+  line-height: 1.1;
+  color: $eg-white;
+  padding-top: 20px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.reveal #slide-title .subtitle-event,
+.reveal #title-slide .subtitle-event {
+  display: block;
+  margin-top: 0;
+  padding-top: 60px;
+  color: rgba($eg-white, 0.75);
+  font-family: $eg-font-mono;
+  font-size: 0.65em;
+  letter-spacing: 0.02em;
+}
+
+.reveal #slide-title .quarto-title-authors,
+.reveal #title-slide .quarto-title-authors {
+  width: 100%;
+  margin: 2em 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.reveal #slide-title .quarto-title-author-name,
+.reveal #title-slide .quarto-title-author-name {
+  color: $eg-yellow;
+  font-family: $eg-font-serif;
+  font-size: 1.35em;
+  font-weight: 600;
+}
+
+.reveal #slide-title .title-author-role,
+.reveal #title-slide .title-author-role {
+  margin: 0.4em 0 0;
+  padding: 0;
+  color: rgba($eg-white, 0.85);
+  font-family: $eg-font-sans;
+  font-size: 0.72em;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* Institute line → Earth Genome logo (img injected in index.qmd script) */
+.reveal #slide-title .quarto-title-affiliation,
+.reveal #title-slide .quarto-title-affiliation {
+  margin: 0.65em 0 0;
+  padding: 0;
+}
+
+.reveal .title-eg-logo {
+  display: block;
+  width: 220px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Hide RevealJS circular auto-slide indicator */
+.reveal aside.controls,
+.reveal .auto-slide-control {
+  display: none !important;
+}
+
+/* Countdown bar: right-to-left, above the progress bar */
+#slide-countdown {
+  position: fixed;
+  bottom: 9px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  z-index: 40;
+  background-color: rgba($eg-green-700, 0.3);
+  pointer-events: none;
+}
+
+/* Quarto logo plugin: hidden (EG logo lives under the author on the title slide) */
+.reveal-viewport .reveal .slide-logo {
+  display: none !important;
+}
+
+/* Slide overview menu — lower left on every slide */
+.reveal-viewport .reveal .slide-menu-button {
+  bottom: 22px;
+  left: 20px;
+  right: auto;
+}
+
+/* Bottom-right: slide index stacked above small CNG logo (markup from index.qmd) */
+#deck-chrome {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 35;
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  pointer-events: none;
+}
+
+#deck-chrome.is-visible {
+  display: flex;
+}
+
+#deck-slide-num {
+  color: $eg-white;
+  font-family: $eg-font-serif;
+  font-size: 3.25rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+#deck-chrome .deck-cng-logo {
+  display: block;
+  height: 28px;
+  width: auto;
+  margin: 0;
+  opacity: 0.85;
+}
+
+#deck-chrome.logo-only #deck-slide-num {
+  display: none;
+}
+
+.reveal-viewport:has(#slide-applause.present) #deck-chrome {
+  display: none !important;
+}
+/* Slides with data-state="no-bars" (title, applause) don't auto-advance, so hide
+   both bars there. Reveal puts the current slide's state on .reveal-viewport.
+   !important because Reveal shows the progress bar with an inline display style. */
+.reveal-viewport.no-bars .reveal .progress,
+.reveal-viewport.no-bars #slide-countdown {
+  display: none !important;
+}
+
+/* The title slide keeps the template's yellow footer stripe even without the bars */
+.reveal-viewport.no-bars .reveal::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6px;
+  background: $eg-yellow;
+  z-index: 40;
+}
+
+#slide-countdown-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: $eg-green-700;
+  transform-origin: right;
+  animation: countdown-rtl 15s linear forwards;
+}
+
+@keyframes countdown-rtl {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* Slide 11: Sun to Earth. Markup is in index.qmd; the clock is driven from animations.html.
+   Animations are scoped to section.present so they replay on every visit. */
+.reveal svg.photon-trip {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.reveal .photon-trail {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.reveal .photon-head {
+  stroke-dasharray: 24 2000;
+  stroke-dashoffset: 24;
+  opacity: 0;
+}
+
+.reveal .earth-glow {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.reveal .trip-clock,
+.reveal .trip-caption {
+  position: absolute;
+  left: 300px;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  opacity: 0;
+}
+
+.reveal .trip-clock {
+  top: 290px;
+  color: $eg-yellow;
+  font-family: $eg-font-mono;
+  font-size: 1.6em;
+  font-weight: 700;
+}
+
+.reveal .trip-caption {
+  top: 580px;
+}
+
+.reveal .slides section.present .photon-trail {
+  animation: photon-trail 3s linear 1s both;
+}
+
+.reveal .slides section.present .photon-head {
+  animation: photon-head 3s linear 1s both;
+}
+
+.reveal .slides section.present .earth-glow {
+  animation: earth-flash 1.6s ease-out 3.9s both;
+}
+
+.reveal .slides section.present .trip-clock {
+  animation: fade-in 0.4s ease-out 1s both;
+}
+
+.reveal .slides section.present .trip-caption {
+  animation: fade-in 0.8s ease-out 4.4s both;
+}
+
+@keyframes photon-trail {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes photon-head {
+  0% {
+    stroke-dashoffset: 24;
+    opacity: 1;
+  }
+  97% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -976;
+    opacity: 0;
+  }
+}
+
+@keyframes earth-flash {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  30% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Timed reveals: set the delay per element with style="--d:1s".
+   Scoped to section.present so they replay on every visit. */
+.reveal .slides section :is(.a-fade, .a-rise) {
+  opacity: 0;
+}
+
+.reveal .slides section.present .a-fade {
+  animation: fade-in 0.8s ease-out var(--d, 0s) both;
+}
+
+.reveal .slides section.present .a-rise {
+  animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Draws a stroke with pathLength="1" from start to end */
+@keyframes draw-1 {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* Headline pinned to the top of a slide */
+.reveal .headline {
+  display: block;
+  margin: 0;
+  color: $eg-white;
+  font-family: $eg-font-serif;
+  font-size: 1.15em;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.reveal .slide-top {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+/* Title on top + framed screenshot below (e.g. slide 18) */
+.reveal .slide-cap {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 44px 72px 88px;
+  gap: 1rem;
+}
+
+.reveal .slide-cap .slide-top {
+  position: static;
+  flex: none;
+  width: 100%;
+}
+
+.reveal .slide-cap .headline {
+  font-size: 2.35em;
+  line-height: 1.1;
+}
+
+.reveal .slide-cap .embeddings-line {
+  margin: 0;
+}
+
+.reveal .slide-cap .embeddings-stat {
+  color: $eg-yellow;
+}
+
+/* Slide 9: tight title, then GIF scaled to the remaining grid row (centered, no clip) */
+.reveal #slide-09 .slide-cap {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  padding: 12px 18px 34px;
+  gap: 4px;
+  box-sizing: border-box;
+}
+
+.reveal #slide-09 .slide-top,
+.reveal #slide-09 .embeddings-line,
+.reveal #slide-09 .embeddings-line p {
+  margin: 0;
+}
+
+.reveal #slide-09 .embeddings-line {
+  font-size: 1.7em;
+  line-height: 1;
+}
+
+.reveal .slide-cap-gif {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+}
+
+.reveal #slide-09 .slide-cap-gif {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal #slide-09 .slide-cap-gif > p {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal .slide-cap-gif img {
+  display: block;
+  margin: 0;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+.reveal #slide-09 .slide-cap-gif img.embeddings-gif {
+  height: 100%;
+  width: 80%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.reveal .slide-frame {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1280px;
+  min-height: 0;
+}
+
+.reveal .slide-frame img {
+  display: block;
+  width: 100%;
+  max-height: 100%;
+  margin: 0;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 2px solid rgba($eg-white, 0.14);
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.5);
+}
+
+/* Slide 5: navy slide — headline left, chart right (~40 / 60) */
+.reveal .slide-impact.slide-intro {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: stretch;
+  gap: 3.5rem;
+  padding: 72px 64px 80px 64px;
+}
+
+.reveal .slide-impact .slide-intro-copy {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 0 2.5rem 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: none;
+  text-align: center;
+}
+
+.reveal .slide-impact .impact-headline {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.reveal .slide-impact .impact-line {
+  display: block;
+  margin: 0;
+  color: $eg-white;
+  font-family: $eg-font-serif;
+  font-size: 2.65em;
+  font-weight: 600;
+  line-height: 1.06;
+  text-align: center;
+  text-shadow:
+    0 2px 24px rgba(0, 0, 0, 0.85),
+    0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.reveal .slide-impact .impact-accent {
+  color: $eg-yellow;
+}
+
+.reveal .slide-impact .impact-headline p {
+  margin: 0;
+}
+
+.reveal .slide-impact .slide-intro-photo {
+  align-self: stretch;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.reveal .slide-impact .slide-intro-photo > p {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal .slide-impact .slide-intro-photo img.impact-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 16px;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.reveal #slide-06 .slide-impact.slide-intro {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.reveal #slide-06 .slide-06-divider {
+  position: relative;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 2.75rem;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.reveal #slide-06 .slide-06-divider > p {
+  margin: 0;
+  height: 100%;
+}
+
+.reveal #slide-06 .slide-06-divider::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 4%;
+  bottom: 4%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba($eg-white, 0.28);
+  border-radius: 1px;
+}
+
+.reveal #slide-06 .slide-06-divider::after {
+  content: "→";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  padding: 0.12em 0.28em;
+  color: $eg-yellow;
+  font-family: $eg-font-sans;
+  font-size: 2.35rem;
+  font-weight: 700;
+  line-height: 1;
+  background: $eg-navy;
+  border-radius: 4px;
+}
+
+.reveal #slide-06 .slide-intro-photo,
+.reveal #slide-06 .slide-intro-copy {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0;
+}
+
+.reveal #slide-06 .slide-intro-photo > p,
+.reveal #slide-06 .slide-intro-copy > p {
+  box-sizing: border-box;
+  flex: 1 1 0;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal #slide-06 .slide-intro-photo > p,
+.reveal #slide-06 .slide-intro-copy > p {
+  padding: 0;
+  background: transparent;
+}
+
+.reveal #slide-06 .slide-06-title {
+  flex: 0 0 auto;
+  margin: 0 0 0.45em;
+  text-align: center;
+}
+
+.reveal #slide-06 .slide-06-title p {
+  margin: 0;
+  color: $eg-white;
+  font-family: $eg-font-serif;
+  font-size: 1.6em;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.reveal #slide-06 .slide-06-star {
+  margin-left: 0.04em;
+  color: $eg-yellow;
+}
+
+.reveal #slide-06 .slide-intro-photo img.impact-chart,
+.reveal #slide-06 .slide-intro-copy img.how-it-right {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 18px;
+}
+
+/* Intro slide: headline + lines left, portrait right (e.g. slide 2) */
+.reveal .slide-intro {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 3rem;
+  padding: 72px 88px 88px 100px;
+}
+
+.reveal .slide-intro-copy {
+  text-align: left;
+  max-width: 820px;
+}
+
+.reveal .slide-intro-copy .big-words {
+  text-align: left;
+  max-width: none;
+  margin-bottom: 0.55em;
+}
+
+.reveal .intro-line {
+  display: block;
+  margin: 0.22em 0 0;
+  padding-left: 0.55em;
+  border-left: 4px solid $eg-yellow;
+  color: rgba($eg-white, 0.92);
+  font-family: $eg-font-sans;
+  font-size: 1.05em;
+  font-weight: 400;
+  line-height: 1.35;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85);
+}
+
+.reveal .slide-intro-photo {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 0;
+  padding: 32px 0;
+}
+
+.reveal .slide-intro-photo .photo-stack {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.reveal .slide-intro-photo .photo-stack-main {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: 520px;
+  margin: 0;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 16px;
+  border: 2px solid rgba($eg-white, 0.18);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+}
+
+.reveal .slide-intro-photo .intro-cng-badge {
+  position: absolute;
+  top: 6%;
+  left: 0;
+  z-index: 2;
+  width: 200px;
+  height: auto;
+  margin: 0;
+  border-radius: 14px;
+  border: 3px solid rgba($eg-white, 0.25);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+  transform: translate(-50%, -50%);
+}
+
+.reveal .slide-intro-photo .selfie-note {
+  position: absolute;
+  right: 100%;
+  bottom: -16px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 68px;
+  pointer-events: none;
+}
+
+.reveal .slide-intro-photo .selfie-arrow {
+  display: block;
+  width: 200px;
+  height: 170px;
+  overflow: visible;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
+.reveal .slide-intro-photo .selfie-arrow path {
+  fill: none;
+  stroke: $eg-yellow;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.reveal .slide-intro-photo .selfie-note-text {
+  margin: 4px 0 0 -20px;
+  color: $eg-yellow;
+  font-family: $eg-font-serif;
+  font-size: 1.15em;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85);
+}
+
+/* Large statement text; add .hl for the yellow highlight */
+.reveal .statement {
+  display: block;
+  margin: 0;
+  color: $eg-white;
+  font-family: $eg-font-serif;
+  font-size: 1.9em;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.reveal .statement.hl {
+  color: $eg-yellow;
+}
+
+.reveal .statement-sub {
+  display: block;
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Slide 1: statements over a photo, with a dark vignette behind the text.
+   The photo is a Reveal background (so it fills the viewport); it's matched by filename. */
+.reveal
+  .backgrounds
+  .slide-background.present[data-background-hash*="pexels-matthew-montrone"]
+  .slide-background-content {
+  animation: kenburns 15s ease-out both;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.14);
+  }
+}
+
+.reveal .deep-shade {
+  position: absolute;
+  inset: -600px -1200px;
+  background: radial-gradient(
+    ellipse 900px 520px at center,
+    rgba($eg-navy, 0.7),
+    rgba($eg-navy, 0)
+  );
+  pointer-events: none;
+}
+
+.reveal .deep-copy {
+  gap: 0.2rem;
+  text-shadow:
+    0 2px 18px rgba(0, 0, 0, 0.9),
+    0 0 4px rgba(0, 0, 0, 0.9);
+}
+
+.reveal .deep-copy p {
+  margin: 0;
+}
+
+/* Slide 12: dependency graph + taxonomy families */
+.reveal .dep-layout {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  top: 170px;
+  bottom: 90px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.reveal svg.dep-graph {
+  width: 100%;
+  height: auto;
+}
+
+.reveal .dep-labels text {
+  fill: $eg-white;
+  font-family: $eg-font-serif;
+  font-size: 38px;
+  font-weight: 600;
+}
+
+.reveal .dep-edge {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.reveal .slides section.present .dep-edge {
+  animation: draw-1 0.5s ease-out var(--d) both;
+}
+
+.reveal ul.families {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.reveal ul.families li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.35em 0;
+  font-size: 0.72em;
+  line-height: 1.2;
+}
+
+.reveal ul.families li::before {
+  content: "";
+  flex: none;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 4px;
+  background: var(--c);
+}
+
+.reveal ul.families b {
+  min-width: 1.6em;
+  color: var(--c);
+}
+
+/* Slide 20: the slide 12 dependency graph keeps growing (canvas driven from animations.html) */
+.reveal canvas.grow-network {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1600px;
+  height: 900px;
+}
+
+.reveal .closing-copy {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 80px;
+  text-align: center;
+  text-shadow:
+    0 0 24px $eg-navy,
+    0 0 8px $eg-navy;
+}
+
+.reveal .closing-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: -80px;
+  height: 360px;
+  background: linear-gradient(
+    to top,
+    rgba($eg-navy, 0.95) 35%,
+    rgba($eg-navy, 0)
+  );
+}
+
+.reveal .closing-copy p {
+  margin: 0.15em 0;
+}
+
+/* Applause slide: stick figures clapping. Each forearm swings about its elbow
+   (transform-origin is set inline, in viewBox units); --d staggers the figures. */
+.reveal svg.clappers {
+  width: 1400px;
+  height: auto;
+}
+
+.reveal .clappers .clapper {
+  overflow: visible;
+}
+
+/* view-box here is each figure's own nested <svg>, so the inline origins match at any scale */
+.reveal .clappers .forearm {
+  transform-box: view-box;
+}
+
+.reveal .clappers .spark {
+  opacity: 0;
+}
+
+/* --t is each figure's own tempo (set inline), so the crowd drifts in and out of sync */
+.reveal .slides section.present .clappers .forearm-l {
+  animation: clap-l var(--t, 0.25s) ease-in var(--d) infinite alternate both;
+}
+
+.reveal .slides section.present .clappers .forearm-r {
+  animation: clap-r var(--t, 0.25s) ease-in var(--d) infinite alternate both;
+}
+
+.reveal .slides section.present .clappers .spark {
+  animation: clap-spark var(--t, 0.25s) ease-in var(--d) infinite alternate both;
+}
+
+@keyframes clap-l {
+  from {
+    transform: rotate(-35deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes clap-r {
+  from {
+    transform: rotate(35deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Slide 13: cartwheels. Each figure crosses from --x0 to --x1 while spinning by
+   --spin, both over --cw, so it rolls like a wheel. Negative delays (--cd) put
+   everyone mid-trip when the slide opens. */
+.reveal svg.cartwheels {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.reveal .cartwheels .cw-spin {
+  transform-box: view-box;
+  transform-origin: 0 0; /* the figure's centre, in its own coordinates */
+}
+
+.reveal .slides section.present .cartwheels .cw-move {
+  animation: cw-move var(--cw) linear var(--cd) infinite both;
+}
+
+.reveal .slides section.present .cartwheels .cw-spin {
+  animation: cw-spin var(--cw) linear var(--cd) infinite both;
+}
+
+@keyframes cw-move {
+  from {
+    transform: translateX(var(--x0));
+  }
+  to {
+    transform: translateX(var(--x1));
+  }
+}
+
+@keyframes cw-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(var(--spin));
+  }
+}
+
+/* Milling about: each person sways by (--dx, --dy) and back on their own slow
+   loop --dp, starting partway through (negative delay --dd) so nobody starts in step. */
+.reveal .slides section.present .clappers .drift {
+  animation: crowd-drift var(--dp, 4s) ease-in-out var(--dd, 0s) infinite
+    alternate both;
+}
+
+@keyframes crowd-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+
+/* High-fives: four random pairs, each with its own start time --hf, length --hfd
+   and walk distance --w (all set inline). Each runs once per visit: step in, raise the facing arm,
+   slap, lower it, step back. The facing clap arm hides while the raised arm shows. */
+.reveal .clappers :is(.hf-arm, .hf-spark) {
+  opacity: 0;
+}
+
+.reveal .clappers .hf-arm {
+  transform-box: view-box;
+}
+
+.reveal .slides section.present .clappers .walker {
+  animation: hf-walk var(--hfd, 1.6s) ease-in-out var(--hf) both;
+}
+
+.reveal .slides section.present .clappers .hf-hide {
+  animation: hf-hide var(--hfd, 1.6s) linear var(--hf) both;
+}
+
+.reveal .slides section.present .clappers .hf-arm-r {
+  animation: hf-raise-r var(--hfd, 1.6s) ease-in-out var(--hf) both;
+}
+
+.reveal .slides section.present .clappers .hf-arm-l {
+  animation: hf-raise-l var(--hfd, 1.6s) ease-in-out var(--hf) both;
+}
+
+.reveal .slides section.present .clappers .hf-spark {
+  animation: hf-spark var(--hfd, 1.6s) ease-out var(--hf) both;
+}
+
+@keyframes hf-walk {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25%,
+  70% {
+    transform: translateX(var(--w));
+  }
+}
+
+@keyframes hf-hide {
+  0%,
+  12% {
+    opacity: 1;
+  }
+  13%,
+  80% {
+    opacity: 0;
+  }
+  81%,
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Starts at 48deg (matching the lowered upper arm), swings up to -40deg to slap */
+@keyframes hf-raise-r {
+  0%,
+  12% {
+    opacity: 0;
+    transform: rotate(48deg);
+  }
+  13% {
+    opacity: 1;
+    transform: rotate(48deg);
+  }
+  35%,
+  50% {
+    opacity: 1;
+    transform: rotate(-40deg);
+  }
+  78% {
+    opacity: 1;
+    transform: rotate(48deg);
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: rotate(48deg);
+  }
+}
+
+@keyframes hf-raise-l {
+  0%,
+  12% {
+    opacity: 0;
+    transform: rotate(-48deg);
+  }
+  13% {
+    opacity: 1;
+    transform: rotate(-48deg);
+  }
+  35%,
+  50% {
+    opacity: 1;
+    transform: rotate(40deg);
+  }
+  78% {
+    opacity: 1;
+    transform: rotate(-48deg);
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: rotate(-48deg);
+  }
+}
+
+@keyframes hf-spark {
+  0%,
+  34% {
+    opacity: 0;
+  }
+  37% {
+    opacity: 1;
+  }
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.reveal .applause-label {
+  margin: 0;
+  color: rgba($eg-white, 0.7);
+  font-size: 1em;
+  font-style: italic;
+}
+
+@keyframes clap-spark {
+  0%,
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* howto: sticky-note instructions for template users — delete the ::: {.howto} block when done */
+.reveal .howto {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  max-width: 28%;
+  padding: 0.6em 0.9em;
+  font-size: 0.45em;
+  text-align: left;
+  color: $eg-navy;
+  background: $eg-yellow;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  z-index: 10;
+}
+
+/* ::: {.howto .bottom} — bottom-center instead of top-right */
+.reveal .howto.bottom {
+  top: auto;
+  right: auto;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 50%;
+}
+
+/* The title slide is vertically centered, so a corner box would cover the title; sit below the author instead */
+.reveal .quarto-title-block .howto {
+  position: static;
+  max-width: 40%;
+  margin: 2rem auto 0;
+}
+
+/* Uncomment to hide every instruction box at once: */
+/* .reveal .howto { display: none; } */
+
+/* ---------- Talk components ---------- */
+
+/* Photo slides: a few words centered over a full-bleed background photo.
+   The photo is dimmed with background-opacity so the navy shows through. */
+.reveal #slide-11 .center-v {
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 72px 0 42%;
+  text-align: right;
+}
+
+.reveal #slide-11 .center-v .big-words {
+  max-width: 520px;
+  text-align: right;
+}
+
+.reveal #slide-12 .center-v {
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 42% 0 0px;
+  text-align: left;
+}
+
+.reveal #slide-12 .flow-words {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.reveal #slide-12 .flow-words p {
+  margin: 0;
+}
+
+.reveal #slide-12 .flow-words .big-words {
+  display: block;
+  line-height: 1.05;
+  text-align: left;
+}
+
+.reveal #slide-12 .flow-words {
+  padding-left: 2.7em;
+  margin-left: -48px;
+}
+
+.reveal #slide-12 .flow-loop {
+  position: relative;
+  display: block;
+  height: 0.32em;
+  font-size: 2.8em;
+}
+
+.reveal #slide-12 .flow-loop svg {
+  position: absolute;
+  top: -0.5em;
+  left: -0.95em;
+  width: 0.9em;
+  height: 1.32em;
+  overflow: visible;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
+}
+
+.reveal #slide-12 .flow-loop path {
+  fill: none;
+  stroke: $eg-yellow;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.reveal .big-words {
+  margin: 0;
+  max-width: 1350px;
+  color: $eg-white;
+  font-family: $eg-font-serif;
+  font-size: 2.8em;
+  font-weight: 600;
+  line-height: 1.1;
+  text-shadow:
+    0 2px 24px rgba(0, 0, 0, 0.85),
+    0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.reveal .big-words.hl {
+  color: $eg-yellow;
+}
+
+.reveal #slide-13 .center-v {
+  gap: 0;
+  padding: 0 140px;
+  background-image:
+    radial-gradient(ellipse 60% 55% at center, rgba($eg-navy, 0) 0%, $eg-navy 100%),
+    linear-gradient(rgba($eg-white, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($eg-white, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 80px 80px, 80px 80px;
+  background-position: center, center, center;
+}
+
+.reveal #slide-13 .center-v > p {
+  margin: 0;
+}
+
+.reveal #slide-13 .pmtiles-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 1.25em;
+}
+
+.reveal #slide-13 .pmtiles-title p {
+  display: contents;
+}
+
+.reveal #slide-13 .pmtiles-mark {
+  width: 1.9em;
+  height: 1.9em;
+  margin: 0;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.5));
+}
+
+.reveal #slide-13 .pmtiles-def {
+  display: block;
+  max-width: 1100px;
+  margin-top: 0.9em;
+  color: rgba($eg-white, 0.92);
+  font-family: $eg-font-serif;
+  font-size: 1.35em;
+  line-height: 1.35;
+}
+
+.reveal #slide-13 .pmtiles-source {
+  display: block;
+  margin-top: 0.7em;
+  color: rgba($eg-white, 0.5);
+  font-size: 0.6em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal #slide-13 .pmtiles-tagline {
+  display: block;
+  margin-top: 1.8em;
+  color: $eg-yellow;
+  font-family: $eg-font-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+/* Slide 13: Protomaps reference + thanks */
+.reveal #slide-14 .slide-14-thanks {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  padding: 20px 48px 0;
+  text-align: center;
+}
+
+.reveal #slide-14 .slide-14-thanks p {
+  margin: 0;
+}
+
+.reveal #slide-14 .slide-14-thanks .big-words {
+  display: inline-block;
+  max-width: none;
+  font-size: 1.5em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.reveal #slide-14 .hl-name {
+  color: $eg-yellow;
+}
+
+.reveal #slide-14 img.slide-14-shot {
+  display: block;
+  height: 700px;
+  width: auto;
+  max-width: 100%;
+  max-height: none;
+  margin: 0;
+  border-radius: 14px;
+}
+
+.reveal #slide-18 .speaker-scroll {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.4;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+
+.reveal #slide-18 .speaker-track {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 48px 36px;
+  padding: 80px 72px;
+}
+
+.reveal #slide-18.present .speaker-track {
+  animation: speaker-scroll 15s linear forwards;
+}
+
+@keyframes speaker-scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% + 900px)); }
+}
+
+.reveal #slide-18 .speaker-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.reveal #slide-18 .speaker-card img {
+  width: 150px;
+  height: 150px;
+  max-width: none;
+  max-height: none;
+  margin: 0 0 6px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+
+.reveal #slide-18 .speaker-name {
+  color: $eg-white;
+  font-family: $eg-font-sans;
+  font-size: 0.5em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.reveal #slide-18 .speaker-org {
+  color: rgba($eg-white, 0.65);
+  font-family: $eg-font-sans;
+  font-size: 0.4em;
+  line-height: 1.2;
+}
+
+.reveal #slide-18 .center-v {
+  z-index: 1;
+}
+
+.reveal #slide-18 .center-v .big-words {
+  display: inline;
+  padding: 0.08em 0.32em;
+  color: $eg-navy;
+  background: $eg-yellow;
+  border-radius: 0.14em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  text-shadow: none;
+}
+
+.reveal #slide-19 .logo-float {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.22;
+  -webkit-mask-image: radial-gradient(ellipse 38% 30% at 50% 50%, transparent 30%, #000 100%);
+  mask-image: radial-gradient(ellipse 38% 30% at 50% 50%, transparent 30%, #000 100%);
+}
+
+.reveal #slide-19 .logo-float-item {
+  position: absolute;
+  width: 150px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  translate: -50% -50%;
+  animation: logo-wave var(--dur) ease-in-out var(--delay) infinite alternate;
+}
+
+.reveal #slide-19 .logo-float-item img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  object-fit: contain;
+  /* Default: SVG wordmarks → white silhouette on the dark slide. */
+  filter: brightness(0) invert(1);
+}
+
+/* Full-color or soft-edge badge PNGs — lighten without a solid white rectangle. */
+.reveal #slide-19 .logo-float-item.is-badge img {
+  filter: grayscale(1) brightness(2.85) contrast(1.05);
+}
+
+/* Dark mark on an opaque white PNG: white ink, background dropped (filter defined in _logo-float.md). */
+.reveal #slide-19 .logo-float-item.is-knockout img {
+  filter: url(#logo-knockout);
+}
+
+.reveal #slide-19 .logo-float-item.is-wide {
+  width: 220px;
+  height: 48px;
+}
+
+@keyframes logo-wave {
+  0%   { transform: translate(-10px, 8px) rotate(calc(var(--rot) * -1)); }
+  50%  { transform: translate(0, -10px) rotate(0deg); }
+  100% { transform: translate(10px, 8px) rotate(var(--rot)); }
+}
+
+.reveal #slide-19 {
+  overflow: visible !important;
+}
+
+.reveal #slide-19 .center-v {
+  z-index: 1;
+  overflow: visible;
+}
+
+.reveal #slide-19 .center-v .big-words {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 0;
+  overflow: visible;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 175%;
+    height: 320%;
+    translate: -50% -50%;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse 100% 100% at 50% 50%,
+      rgba($eg-yellow, 0.2) 0%,
+      rgba($eg-yellow, 0.07) 32%,
+      rgba($eg-yellow, 0) 62%
+    );
+    filter: blur(16px);
+    pointer-events: none;
+  }
+}
+
+.reveal #slide-15 .slide-15-photo-wrap {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  z-index: 2;
+}
+
+.reveal #slide-15 .slide-15-photo-wrap p {
+  margin: 0;
+}
+
+.reveal #slide-15 img.slide-15-photo {
+  display: block;
+  width: 440px;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.reveal .big-words-sub {
+  margin: 0;
+  max-width: 1200px;
+  color: rgba($eg-white, 0.9);
+  font-size: 1.1em;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85);
+}
+
+.reveal .big-logo {
+  width: 900px;
+  max-width: 80%;
+  height: auto;
+  margin: 0;
+  filter: drop-shadow(0 2px 24px rgba(0, 0, 0, 0.7));
+}
+
+.reveal .earth-index-logo {
+  display: block;
+  width: min(720px, 78vw);
+  max-width: 85%;
+  height: auto;
+  margin: 0;
+  filter: drop-shadow(0 4px 28px rgba(0, 0, 0, 0.65));
+}
+
+.reveal .logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 280px);
+  gap: 22px;
+  margin-top: 1.4rem;
+}
+
+.reveal .logo-card {
+  box-sizing: border-box;
+  height: 150px;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border-radius: 16px;
+  background: $eg-base;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+}
+
+.reveal .logo-card p {
+  display: contents;
+}
+
+.reveal .logo-card img {
+  display: block;
+  max-width: 100%;
+  max-height: 88px;
+  width: auto;
+  height: auto;
+  margin: 0;
+  object-fit: contain;
+}
+
+.reveal .logo-card:has(.logo-label) img {
+  max-height: 64px;
+}
+
+.reveal .logo-label {
+  color: $eg-navy;
+  font-family: $eg-font-sans;
+  font-size: 0.8em;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.reveal #slide-17 .ei-cta {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 72px;
+  align-items: center;
+  padding: 56px 56px 72px 96px;
+}
+
+.reveal #slide-17 .ei-cta p {
+  margin: 0;
+}
+
+.reveal #slide-17 .ei-cta-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  text-align: left;
+}
+
+.reveal #slide-17 img.ei-cta-logo {
+  display: block;
+  width: 214px;
+  height: auto;
+  margin: 0 0 12px;
+}
+
+.reveal #slide-17 .ei-cta-title {
+  display: block;
+  color: $eg-white;
+  font-family: $eg-font-serif;
+  font-size: 2.6em;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.reveal #slide-17 .ei-cta-kicker {
+  display: block;
+  margin-bottom: 0.3em;
+  color: $eg-yellow;
+  font-size: 0.62em;
+}
+
+.reveal #slide-17 .ei-cta-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 0.55em 1em;
+  border-radius: 6px;
+  background: $eg-yellow;
+  color: $eg-navy;
+  font-family: $eg-font-sans;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reveal #slide-17 .ei-cta-visual {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+}
+
+.reveal #slide-17 .ei-cta-visual > p {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+}
+
+.reveal #slide-17 img.ei-cta-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.reveal .qr-small {
+  width: 260px;
+  height: 260px;
+  margin: 0.4em 0 0;
+  padding: 16px;
+  border-radius: 12px;
+  background: $eg-white;
+}
+
+.reveal .mega {
+  font-size: 3.4em;
+  line-height: 1;
+}
+
+.reveal .lede {
+  margin: 0;
+  max-width: 1200px;
+  color: rgba($eg-white, 0.8);
+  font-size: 0.85em;
+}
+
+.reveal .center-v :is(h2, h3) {
+  margin: 0;
+}
+
+.reveal .center-v p:has(> .ph-label) {
+  margin: 0 0 0.4em;
+}
+
+.reveal .ph-label {
+  color: $eg-white;
+  font-family: $eg-font-serif;
+  font-size: 1.3em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Photo slots: swap a .photo-ph for ![](images/….jpg) when the photo is ready */
+.reveal .photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 1400px;
+}
+
+.reveal .photo-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.reveal .photo-ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  aspect-ratio: 4 / 3;
+  padding: 1em;
+  border: 3px dashed rgba($eg-white, 0.3);
+  border-radius: 10px;
+  background: $eg-navy-900;
+  color: rgba($eg-white, 0.55);
+  font-family: $eg-font-mono;
+  font-size: 0.45em;
+  text-align: center;
+}
+
+.reveal .photo-ph.bleed {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+  align-items: flex-start;
+  padding-top: 2em;
+}
+
+.reveal .overlay-copy {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  bottom: 110px;
+  text-align: left;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
+}
+
+.reveal .overlay-copy p {
+  margin: 0.15em 0;
+}
+
+/* Global vs local (slide 3) */
+.reveal .scale-art {
+  width: 340px;
+  height: 340px;
+  margin: 0.4em 0;
+}
+
+.reveal .scale-label {
+  margin: 0;
+  font-family: $eg-font-mono;
+  font-size: 0.55em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba($eg-white, 0.6);
+}
+
+.reveal .panel-light .scale-label {
+  color: $eg-navy-800;
+}
+
+/* Cluttered traditional pipeline (slide 4): nodes sit on a 1400×560 canvas */
+.reveal .clutter {
+  position: relative;
+  width: 1400px;
+  height: 560px;
+}
+
+.reveal .clutter svg {
+  position: absolute;
+  inset: 0;
+}
+
+.reveal .clutter .node {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 230px;
+  padding: 0.35em 0.4em;
+  border: 2px solid $eg-navy-800;
+  border-radius: 8px;
+  background: $eg-navy-900;
+  color: rgba($eg-white, 0.85);
+  font-family: $eg-font-mono;
+  font-size: 0.48em;
+  text-align: center;
+  transform: rotate(var(--r, 0deg));
+}
+
+.reveal .clutter .node.warn {
+  border-color: #f26835;
+  color: #f9a37f;
+}
+
+/* Hours split (slide 5) */
+.reveal .tradeoff {
+  display: flex;
+  width: 1300px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: $eg-font-mono;
+  font-size: 0.6em;
+}
+
+.reveal .tradeoff .seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal .tradeoff .plumbing {
+  background: $eg-navy-800;
+  color: rgba($eg-white, 0.85);
+}
+
+.reveal .tradeoff .impact {
+  background: $eg-yellow;
+  color: $eg-navy;
+  font-weight: 700;
+}
+
+/* PMTiles single-file diagram (slide 6) */
+.reveal .pmfile {
+  position: relative;
+  width: 360px;
+  padding: 70px 30px 30px;
+  border-radius: 12px 70px 12px 12px;
+  background: $eg-base;
+  color: $eg-navy;
+  font-family: $eg-font-mono;
+  font-size: 0.5em;
+}
+
+.reveal .pmfile .pm-seg {
+  margin-top: 10px;
+  padding: 0.5em;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.reveal .pmfile .hdr {
+  background: $eg-grey-200;
+}
+.reveal .pmfile .dir {
+  background: $eg-green-200;
+}
+.reveal .pmfile .tiles {
+  background: $eg-yellow;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal .pmfile .pm-name {
+  margin-top: 16px;
+  font-size: 1.2em;
+  font-weight: 700;
+  text-align: center;
+}
+
+.reveal .facts ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.reveal .facts li {
+  margin: 0.45em 0;
+  padding-left: 0.9em;
+  border-left: 6px solid $eg-yellow;
+}
+
+/* Client-side architecture (slide 7) and bypass (slide 8) */
+.reveal .arch {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.reveal .arch .box,
+.reveal .bypass .box {
+  padding: 0.6em 0.8em;
+  border: 3px solid $eg-white;
+  border-radius: 12px;
+  background: $eg-navy-900;
+  text-align: center;
+}
+
+.reveal .arch .box b,
+.reveal .bypass .box b {
+  display: block;
+  font-family: $eg-font-serif;
+  font-weight: 600;
+}
+
+.reveal .arch .box span,
+.reveal .bypass .box span {
+  display: block;
+  font-family: $eg-font-mono;
+  font-size: 0.5em;
+  color: rgba($eg-white, 0.7);
+}
+
+.reveal .arch .wire {
+  width: 420px;
+  text-align: center;
+  font-family: $eg-font-mono;
+  font-size: 0.48em;
+  color: $eg-yellow;
+}
+
+.reveal .arch .wire svg {
+  display: block;
+  width: 100%;
+  height: 40px;
+}
+
+.reveal .gone {
+  display: flex;
+  gap: 1.2em;
+  justify-content: center;
+  margin: 0;
+  font-family: $eg-font-mono;
+  font-size: 0.55em;
+  color: rgba($eg-white, 0.5);
+}
+
+.reveal .gone s {
+  text-decoration-color: $eg-yellow;
+  text-decoration-thickness: 3px;
+}
+
+.reveal .bypass {
+  position: relative;
+  width: 1400px;
+  height: 420px;
+}
+
+.reveal .bypass .row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reveal .bypass .row .box {
+  width: 200px;
+}
+
+.reveal .bypass .legacy .box {
+  border-color: $eg-navy-800;
+}
+
+.reveal .slides section.present .bypass .legacy {
+  animation: fade-to-ghost 0.8s ease-out var(--d, 0s) both;
+}
+
+@keyframes fade-to-ghost {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.25;
+  }
+}
+
+.reveal .bypass .legacy {
+  display: flex;
+  gap: 24px;
+}
+
+.reveal .bypass .arc {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+.reveal .bypass .arc path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.reveal .slides section.present .bypass .arc path {
+  animation: draw-1 1.2s ease-out var(--d, 0s) both;
+}
+
+.reveal .bypass .arc-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  font-family: $eg-font-mono;
+  font-size: 0.55em;
+  color: $eg-yellow;
+}
+
+/* Drag-and-drop UI mockup (slide 9) */
+.reveal .browser {
+  width: 1300px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: $eg-navy-900;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  text-align: left;
+}
+
+.reveal .browser .chrome {
+  display: flex;
+  gap: 10px;
+  padding: 14px 18px;
+  background: $eg-navy-800;
+}
+
+.reveal .browser .chrome i {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba($eg-white, 0.35);
+}
+
+.reveal .browser .body {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  height: 500px;
+}
+
+.reveal .browser .side {
+  padding: 24px;
+  border-right: 2px solid $eg-navy-800;
+  font-size: 0.5em;
+}
+
+.reveal .browser .side h4 {
+  margin: 0 0 0.6em;
+  font-size: 1.2em;
+}
+
+.reveal .browser .layer {
+  margin: 0.5em 0;
+  padding: 0.5em 0.7em;
+  border-radius: 6px;
+  background: rgba($eg-white, 0.06);
+}
+
+.reveal .browser .layer.new {
+  border-left: 6px solid $eg-yellow;
+}
+
+.reveal .browser .map {
+  position: relative;
+  background:
+    linear-gradient(rgba($eg-white, 0.04) 1px, transparent 1px) 0 0 / 60px 60px,
+    linear-gradient(90deg, rgba($eg-white, 0.04) 1px, transparent 1px) 0 0 /
+      60px 60px,
+    #16313a;
+}
+
+.reveal .browser .map svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.reveal .browser .dropzone {
+  position: absolute;
+  inset: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px dashed rgba($eg-yellow, 0.7);
+  border-radius: 16px;
+  color: $eg-yellow;
+  font-family: $eg-font-mono;
+  font-size: 0.6em;
+}
+
+.reveal .slides section.present .browser .dropzone {
+  animation: fade-out 0.4s ease-out var(--d, 0s) both;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.reveal .browser .file-chip {
+  position: absolute;
+  top: 40%;
+  left: 38%;
+  padding: 0.4em 0.8em;
+  border-radius: 8px;
+  background: $eg-base;
+  color: $eg-navy;
+  font-family: $eg-font-mono;
+  font-size: 0.55em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+}
+
+.reveal .slides section.present .browser .file-chip {
+  animation: chip-drop 2.6s ease-in-out var(--d, 0s) both;
+}
+
+@keyframes chip-drop {
+  0% {
+    opacity: 0;
+    transform: translate(-260px, -140px) rotate(-6deg);
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(-2deg);
+  }
+  80% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+/* Metric tiles (slide 10) */
+.reveal .metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  width: 1400px;
+}
+
+.reveal .metric {
+  padding: 1em 0.6em;
+  border-top: 8px solid $eg-yellow;
+  border-radius: 10px;
+  background: $eg-navy-900;
+  text-align: center;
+}
+
+.reveal .metric .big-number {
+  font-size: 5rem;
+}
+
+.reveal .metric p {
+  margin: 0.4em 0 0;
+  font-size: 0.6em;
+  color: rgba($eg-white, 0.8);
+}
+
+/* Ecosystem badges (slides 12, 17) */
+.reveal .badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  max-width: 1400px;
+}
+
+.reveal .badge {
+  display: flex;
+  align-items: center;
+  height: 110px;
+  padding: 0 1em;
+  border: 3px solid $eg-navy-800;
+  border-radius: 14px;
+  background: $eg-navy-900;
+  font-family: $eg-font-serif;
+  font-weight: 600;
+}
+
+.reveal .badge img {
+  height: 64px;
+  margin: 0;
+}
+
+.reveal .badge.key {
+  border-color: $eg-yellow;
+  color: $eg-yellow;
+}
+
+/* Developer-time bars (slide 13) */
+.reveal .bars {
+  width: 1300px;
+  text-align: left;
+}
+
+.reveal .bar-row {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  align-items: center;
+  gap: 24px;
+  margin: 36px 0;
+}
+
+.reveal .bar-label {
+  font-size: 0.65em;
+}
+
+.reveal .bar {
+  width: var(--w);
+  height: 90px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.6em;
+  border-radius: 8px;
+  background: $eg-navy-800;
+  font-family: $eg-font-mono;
+  font-size: 0.5em;
+  white-space: nowrap;
+  transform-origin: left;
+}
+
+.reveal .bar.win {
+  background: $eg-yellow;
+  color: $eg-navy;
+  font-weight: 700;
+}
+
+.reveal .slides section .bar {
+  transform: scaleX(0);
+}
+
+.reveal .slides section.present .bar {
+  animation: grow-x 1s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
+}
+
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Case-study cards (slide 14) */
+.reveal .cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  width: 1400px;
+}
+
+.reveal .cards .card {
+  min-height: 300px;
+  font-size: 0.6em;
+}
+
+.reveal .cards .card h4 {
+  font-size: 1.4em;
+}
+
+/* Steps and equations (slides 17, 18) */
+.reveal .flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  font-size: 0.8em;
+}
+
+.reveal .flow .chip {
+  padding: 0.5em 0.9em;
+  border: 3px solid $eg-navy-800;
+  border-radius: 12px;
+  background: $eg-navy-900;
+  font-family: $eg-font-serif;
+  font-weight: 600;
+  text-align: center;
+}
+
+.reveal .flow .chip small {
+  display: block;
+  font-family: $eg-font-mono;
+  font-size: 0.55em;
+  font-weight: 400;
+  color: rgba($eg-white, 0.65);
+}
+
+.reveal .flow .chip.key {
+  border-color: $eg-yellow;
+  background: $eg-yellow;
+  color: $eg-navy;
+}
+
+.reveal .flow .chip.key small {
+  color: $eg-navy-800;
+}
+
+.reveal .flow .op {
+  color: $eg-yellow;
+  font-family: $eg-font-mono;
+  font-size: 1.2em;
+}
+
+/* Contact / QR (slide 20) */
+.reveal .qr {
+  width: 380px;
+  height: 380px;
+  margin: 0 0 0.4em;
+}
+
+.reveal .contact p {
+  margin: 0.2em 0;
+}
