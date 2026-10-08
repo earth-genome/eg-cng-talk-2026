@@ -68,6 +68,7 @@
 <div class="speaker-card"><img src="images/speakers/mikolaj-czerkawski.jpg" alt=""><span class="speaker-name">Mikolaj Czerkawski</span><span class="speaker-org">Asterisk Labs</span></div>
 <div class="speaker-card"><img src="images/speakers/nissim-lebovits.jpg" alt=""><span class="speaker-name">Nissim Lebovits</span><span class="speaker-org">Radiant Earth</span></div>
 <div class="speaker-card"><img src="images/speakers/noah-slocum.jpg" alt=""><span class="speaker-name">Noah Slocum</span><span class="speaker-org">Esri</span></div>
+<div class="speaker-card"><img src="images/speakers/pete-gadomski.jpg" alt=""><span class="speaker-name">Pete Gadomski</span><span class="speaker-org">Development Seed</span></div>
 <div class="speaker-card"><img src="images/speakers/philip-casey.jpg" alt=""><span class="speaker-name">Philip Casey</span><span class="speaker-org">North Carolina Institute for Climate Studies</span></div>
 <div class="speaker-card"><img src="images/speakers/pranav-toggi.jpg" alt=""><span class="speaker-name">Pranav Toggi</span><span class="speaker-org">Wherobots</span></div>
 <div class="speaker-card"><img src="images/speakers/raphael-hagen.jpg" alt=""><span class="speaker-name">Raphael Hagen</span><span class="speaker-org">CarbonPlan</span></div>

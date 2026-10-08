@@ -1892,11 +1892,18 @@ $presentation-h2-font-size: 1.8em;
   max-height: none;
   margin: 0;
   object-fit: contain;
+  /* Default: SVG wordmarks → white silhouette on the dark slide. */
   filter: brightness(0) invert(1);
 }
 
+/* Full-color or soft-edge badge PNGs — lighten without a solid white rectangle. */
 .reveal #slide-19 .logo-float-item.is-badge img {
-  filter: grayscale(1) brightness(1.4);
+  filter: grayscale(1) brightness(2.85) contrast(1.05);
+}
+
+/* Dark mark on an opaque white PNG: white ink, background dropped (filter defined in _logo-float.md). */
+.reveal #slide-19 .logo-float-item.is-knockout img {
+  filter: url(#logo-knockout);
 }
 
 .reveal #slide-19 .logo-float-item.is-wide {
