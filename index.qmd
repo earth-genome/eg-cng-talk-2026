@@ -66,6 +66,16 @@ When I started getting this talk together, I realized that it's interesting, but
 ![](images/brad-hiking.jpg){.photo-stack-main}
 
 ![](images/cng-mark.jpg){.intro-cng-badge fig-alt="Cloud-Native Geospatial"}
+
+```{=html}
+<div class="selfie-note">
+  <svg class="selfie-arrow" viewBox="0 0 200 170" aria-hidden="true">
+    <path d="M28 160 C 50 100, 140 96, 124 132 C 110 162, 58 128, 104 86 C 132 60, 160 44, 188 26" />
+    <path d="M168 24 L189 25 L183 46" />
+  </svg>
+  <span class="selfie-note-text">CNG 2025</span>
+</div>
+```
 :::
 :::
 :::
@@ -126,6 +136,10 @@ Any tools, decisions, technologies, etc. that save us time and money are things 
 
 ::: {.slide-intro .slide-impact}
 ::: {.slide-intro-photo}
+::: {.slide-06-title}
+Find Mining
+:::
+
 ![](images/how-it-came-to-be.jpg){.impact-chart fig-alt="From river imagery and satellites to Amazon Mining Watch and New York Times coverage"}
 :::
 
@@ -133,6 +147,10 @@ Any tools, decisions, technologies, etc. that save us time and money are things 
 :::
 
 ::: {.slide-intro-copy}
+::: {.slide-06-title}
+Find Anything[\*]{.slide-06-star}
+:::
+
 ![](images/how-it-came-to-be-right.jpg){.how-it-right fig-alt="Earth Index product evolution: maps, tasks, wireframes, and labeling UI"}
 :::
 :::
@@ -159,6 +177,34 @@ What it is: a tool to let users easily label things in satellite imagery, and th
 
 ::: {.center-v}
 [The CNG Bits<br>Under the Hood]{.big-words}
+
+::: {.logo-grid}
+::: {.logo-card}
+![](images/logos/geoparquet-icon.png){fig-alt="GeoParquet"}
+[GeoParquet]{.logo-label}
+:::
+
+::: {.logo-card}
+![](images/logos/cng.png){fig-alt="Cloud-Native Geospatial Forum"}
+:::
+
+::: {.logo-card}
+![](images/logos/source-cooperative.png){fig-alt="Source Cooperative"}
+:::
+
+::: {.logo-card}
+![](images/logos/stac.png){fig-alt="STAC"}
+:::
+
+::: {.logo-card}
+![](images/logos/cog.png){fig-alt="Cloud Optimized GeoTIFF"}
+:::
+
+::: {.logo-card}
+![](images/logos/pmtiles-protomaps.png){fig-alt="PMTiles"}
+[PMTiles]{.logo-label}
+:::
+:::
 :::
 
 ::: {.notes}
@@ -196,7 +242,7 @@ But users, the people we made the thing for, have a shapefile or a GeoJSON with 
 :::
 
 
-## {#slide-11 background-image="images/bg/11-the-need.jpg" background-opacity="0.4"}
+## {#slide-11 background-image="images/bg/11-the-need.jpg" background-opacity="0.55" background-size="cover" background-position="left center"}
 
 ::: {.center-v}
 [Draw on Top of<br>What You Already Know]{.big-words}
@@ -207,10 +253,18 @@ The need: let users upload a reference layer to draw their labels on top of.
 :::
 
 
-## {#slide-12 background-image="images/bg/12-pmtiles.jpg" background-opacity="0.45"}
+## {#slide-12 background-image="images/bg/12-pmtiles.png" background-opacity="0.55" background-size="cover" background-position="right center"}
 
 ::: {.center-v}
-[Upload → PMTiles → Done]{.big-words}
+```{=html}
+<div class="flow-words">
+  <span class="big-words">Upload</span>
+  <span class="flow-loop" aria-hidden="true"><svg viewBox="0 0 40 64"><path d="M36 6 C 4 6, 4 56, 32 56" /><path d="M25 49 L34 56 L25 63" /></svg></span>
+  <span class="big-words">PMTiles</span>
+  <span class="flow-loop" aria-hidden="true"><svg viewBox="0 0 40 64"><path d="M36 6 C 4 6, 4 56, 32 56" /><path d="M25 49 L34 56 L25 63" /></svg></span>
+  <span class="big-words">Done</span>
+</div>
+```
 :::
 
 ::: {.notes}
@@ -218,10 +272,19 @@ Simply let the user upload the local file, then we convert it to PMTiles, a sing
 :::
 
 
-## {#slide-13 background-image="images/bg/13-why-pmtiles.jpg" background-opacity="0.4"}
+## {#slide-13}
 
 ::: {.center-v}
-[Cheap. Simple. Fast.]{.big-words}
+::: {.pmtiles-title}
+![](images/logos/pmtiles-protomaps.png){.pmtiles-mark fig-alt=""}
+[PMTiles]{.big-words}
+:::
+
+[A single-file archive format for tiled data, usually used for visualization.]{.pmtiles-def}
+
+[Cloud-Optimized Geospatial Formats Guide]{.pmtiles-source}
+
+[Cheap. Simple. Fast.]{.pmtiles-tagline}
 :::
 
 ::: {.notes}
@@ -229,21 +292,27 @@ Why PMTiles was our choice: cheap, simple, fast, and it fit our straightforward,
 :::
 
 
-## {#slide-14 background-image="images/bg/14-tbd.jpg" background-opacity="0.45"}
+## {#slide-14}
 
-::: {.center-v}
-[TBD]{.big-words}
+::: {.slide-14-thanks}
+[Many Thanks, [Brandon Liu]{.hl-name}]{.big-words}
+
+![](images/bg/14-tbd.png){.slide-14-shot fig-alt="What is Protomaps, CNG Conference 2025"}
 :::
 
 ::: {.notes}
-Slide 14 is blank in the outline.
+Protomaps at CNG Conference 2025 — “What is Protomaps” (reference slide).
 :::
 
 
-## {#slide-15 background-image="images/bg/15-saved-time.jpg" background-opacity="0.45"}
+## {#slide-15 background-image="images/bg/15-saved-time.png" background-opacity="0.45" background-size="cover" background-position="center"}
 
 ::: {.center-v}
-[Less Plumbing.<br>More Users.]{.big-words}
+[Less Plumbing, <br>More [Impact.]{.hl}]{.big-words}
+:::
+
+::: {.slide-15-photo-wrap data-pin-right="15"}
+![](images/salmon-farm.jpg){.slide-15-photo fig-alt="Salmon farm pens on a lake in Los Lagos, Chile"}
 :::
 
 ::: {.notes}
@@ -251,35 +320,11 @@ Saved us time and our limited resources. The people in this community (shoutout 
 :::
 
 
-## {#slide-16 background-image="images/bg/16-just-works.jpg" background-opacity="0.4"}
-
-::: {.center-v}
-[It Just Works]{.big-words}
-:::
-
-::: {.notes}
-Show a GIF of it working? And that's what we ended up with: a simple feature that just works.
-:::
-
-
-## {#slide-17 background-image="images/bg/17-open-access.jpg" background-opacity="0.45"}
-
-::: {.center-v}
-[Earth Index Is Open]{.big-words}
-
-![](images/qr-earth-index.svg){.qr-small fig-alt="QR code for Earth Index"}
-:::
-
-::: {.notes}
-Open access callout: go sign up, explore embeddings search, and let us know how it works for you.
-:::
-
-
-## {#slide-18}
+## {#slide-16}
 
 ::: {.slide-cap}
 ::: {.slide-top}
-[Search for Stuff]{.headline}
+[Search for Stuff = [PMTiles Again]{.hl}]{.headline}
 :::
 
 ::: {.slide-frame}
@@ -292,27 +337,61 @@ Same pattern, just launched. Create reference layers by using the robots to help
 :::
 
 
-## {#slide-19 background-image="images/bg/19-chat.jpg" background-opacity="0.45"}
+## {#slide-17}
+
+::: {.ei-cta}
+::: {.ei-cta-copy}
+![](images/earth-index-logo.png){.ei-cta-logo fig-alt="Earth Index"}
+
+[[Now In Open Access]{.ei-cta-kicker} Sign Up and Find Things]{.ei-cta-title}
+
+[earthgenome.org/earth-index →](https://www.earthgenome.org/earth-index){.ei-cta-button}
+:::
+
+::: {.ei-cta-visual}
+![](images/ei-mining-detect.jpg){.ei-cta-img fig-alt="Earth Index detection outline around mining along an Amazon river"}
+:::
+:::
+
+::: {.notes}
+Open access callout: go sign up, explore embeddings search, and let us know how it works for you.
+:::
+
+
+## {#slide-18}
+
+::: {.center-v}
+[Thank You, CNG Community]{.big-words}
+:::
+
+{{< include _speakers-grid.md >}}
+
+::: {.notes}
+A thank you to this community. You have had an impact; this is just one example.
+:::
+
+
+## {#slide-19}
 
 ::: {.center-v}
 [Let's Chat]{.big-words}
 :::
+
+{{< include _logo-float.md >}}
 
 ::: {.notes}
 If you want to chat more, or want to partner with a tech nonprofit on data science and software development, come find me.
 :::
 
 
-## {#slide-20 background-image="images/bg/20-thank-you.jpg" background-opacity="0.45"}
+## {#slide-20 background-image="images/bg/01-underwhelmed.avif" background-opacity="0.45"}
 
 ::: {.center-v}
-[Thank You, CNG Community]{.big-words}
-
-[What Else Can We Make Underwhelming?]{.big-words-sub}
+[What Else Can We Make Underwhelming?]{.big-words}
 :::
 
 ::: {.notes}
-A thank you to this community. You have had an impact; this is just one example. Now what else can we make underwhelming?
+Now what else can we make underwhelming?
 :::
 
 

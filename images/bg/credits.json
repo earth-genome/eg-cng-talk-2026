@@ -57,10 +57,17 @@
   },
  {
   "file": "images/bg/08-under-the-hood.jpg",
-  "title": "Vintage US car engine",
-  "creator": "Markus Spiske",
+  "title": "Rostov-on-Don, a Russian City on the Don (Landsat)",
+  "creator": "NASA",
   "license": "cc0",
-  "source": "https://www.rawpixel.com/image/560250/vintage-car-engine"
+  "source": "https://www.rawpixel.com/search/Rostov-on-Don%20NASA"
+ },
+ {
+  "file": "images/logos/",
+  "title": "GeoParquet (Apache Parquet mark), CNG, Source Cooperative, STAC, COG, PMTiles (Protomaps mark) logos",
+  "creator": "Respective projects",
+  "license": "trademark, used for reference",
+  "source": "geoparquet.org, guide.cloudnativegeo.org, source.coop, stacspec.org, cogeo.org, github.com/protomaps/docs"
  },
  {
   "file": "images/ei-embeddings.gif",
@@ -71,45 +78,38 @@
  },
  {
   "file": "images/bg/10-local-files.jpg",
-  "title": "Map Travel",
-  "creator": "Louis Blythe",
-  "license": "cc0",
-  "source": "https://stocksnap.io/photo/map-travel-Z48KE2LGC3"
+  "title": "Earth Index workshop with participants on laptops",
+  "creator": "Earth Genome",
+  "license": "internal",
+  "source": "Talk asset"
  },
  {
   "file": "images/bg/11-the-need.jpg",
-  "title": "Writing Drawing",
-  "creator": "Startup Stock Photos",
-  "license": "cc0",
-  "source": "https://stocksnap.io/photo/writing-drawing-Y2P39NGLLO"
+  "title": "Earth Index reference layer on solar farm (Colorado Springs)",
+  "creator": "Earth Genome",
+  "license": "internal",
+  "source": "Talk asset"
  },
  {
-  "file": "images/bg/12-pmtiles.jpg",
-  "title": "Cardboard Box",
-  "creator": "Matt Bango",
-  "license": "cc0",
-  "source": "https://stocksnap.io/photo/cardboard-box-USP4WCYPBW"
+  "file": "images/bg/12-pmtiles.png",
+  "title": "Earth Index reference layers panel (Solar Farms)",
+  "creator": "Earth Genome",
+  "license": "internal",
+  "source": "Talk asset"
  },
  {
-  "file": "images/bg/13-why-pmtiles.jpg",
-  "title": null,
-  "creator": null,
-  "license": "cc0",
-  "source": "https://www.rawpixel.com/image/5949687/free-public-domain-cc0-photo"
+  "file": "images/bg/14-tbd.png",
+  "title": "What is Protomaps (CNG Conference 2025)",
+  "creator": "Protomaps / CNG",
+  "license": "reference",
+  "source": "Talk screenshot"
  },
  {
-  "file": "images/bg/14-tbd.jpg",
-  "title": "Close question mark drawn chalk",
-  "creator": null,
-  "license": "cc0",
-  "source": "https://www.rawpixel.com/image/5917647/image-public-domain-free-question-mark"
- },
- {
-  "file": "images/bg/15-saved-time.jpg",
-  "title": "Black white pipe",
-  "creator": null,
-  "license": "cc0",
-  "source": "https://www.rawpixel.com/image/6020029/photo-image-public-domain-house-wall"
+  "file": "images/bg/15-saved-time.png",
+  "title": "Earth Index: Salmon Aquaculture, Los Lagos, Chile (screenshot)",
+  "creator": "Earth Genome",
+  "license": "user-provided",
+  "source": null
  },
  {
   "file": "images/bg/16-just-works.jpg",
@@ -119,11 +119,11 @@
   "source": "https://stocksnap.io/photo/light-switch-GCFFRMA9VR"
  },
  {
-  "file": "images/bg/17-open-access.jpg",
-  "title": null,
-  "creator": null,
-  "license": "cc0",
-  "source": "https://www.rawpixel.com/image/5946971/free-public-domain-cc0-photo"
+  "file": "images/ei-mining-detect.jpg",
+  "title": "Earth Index homepage hero imagery (mining detection, Amazon river)",
+  "creator": "Earth Genome",
+  "license": "user-provided",
+  "source": "https://www.earthgenome.org/earth-index"
  },
  {
   "file": "images/search-for-stuff.png",

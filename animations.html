@@ -280,4 +280,33 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 })();
+
+// Elements with data-pin-right="N" sit N screen px from the viewport's right edge,
+// regardless of Reveal's slide scale and letterbox margin.
+(function () {
+  function place() {
+    var scale = Reveal.getScale() || 1;
+    document.querySelectorAll('[data-pin-right]').forEach(function (el) {
+      var slide = el.closest('section');
+      if (!slide || !slide.classList.contains('present')) return;
+      var gap = window.innerWidth - slide.getBoundingClientRect().right;
+      var inset = parseFloat(el.getAttribute('data-pin-right')) || 0;
+      el.style.right = ((inset - gap) / scale) + 'px';
+    });
+  }
+
+  function boot() {
+    Reveal.on('slidechanged', place);
+    Reveal.on('resize', place);
+    place();
+  }
+
+  function start() {
+    if (Reveal.isReady()) boot();
+    else Reveal.on('ready', boot);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+})();
 </script>

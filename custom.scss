@@ -512,7 +512,6 @@ $presentation-h2-font-size: 1.8em;
 .reveal-viewport:has(#slide-applause.present) #deck-chrome {
   display: none !important;
 }
-
 /* Slides with data-state="no-bars" (title, applause) don't auto-advance, so hide
    both bars there. Reveal puts the current slide's state on .reveal-viewport.
    !important because Reveal shows the progress bar with an inline display style. */
@@ -811,7 +810,7 @@ $presentation-h2-font-size: 1.8em;
 
 .reveal #slide-09 .slide-cap-gif img.embeddings-gif {
   height: 100%;
-  width: auto;
+  width: 80%;
   max-width: 100%;
   object-fit: contain;
   object-position: center;
@@ -997,6 +996,26 @@ $presentation-h2-font-size: 1.8em;
   background: transparent;
 }
 
+.reveal #slide-06 .slide-06-title {
+  flex: 0 0 auto;
+  margin: 0 0 0.45em;
+  text-align: center;
+}
+
+.reveal #slide-06 .slide-06-title p {
+  margin: 0;
+  color: $eg-white;
+  font-family: $eg-font-serif;
+  font-size: 1.6em;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.reveal #slide-06 .slide-06-star {
+  margin-left: 0.04em;
+  color: $eg-yellow;
+}
+
 .reveal #slide-06 .slide-intro-photo img.impact-chart,
 .reveal #slide-06 .slide-intro-copy img.how-it-right {
   display: block;
@@ -1086,6 +1105,46 @@ $presentation-h2-font-size: 1.8em;
   border: 3px solid rgba($eg-white, 0.25);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
   transform: translate(-50%, -50%);
+}
+
+.reveal .slide-intro-photo .selfie-note {
+  position: absolute;
+  right: 100%;
+  bottom: -16px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 68px;
+  pointer-events: none;
+}
+
+.reveal .slide-intro-photo .selfie-arrow {
+  display: block;
+  width: 200px;
+  height: 170px;
+  overflow: visible;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
+.reveal .slide-intro-photo .selfie-arrow path {
+  fill: none;
+  stroke: $eg-yellow;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.reveal .slide-intro-photo .selfie-note-text {
+  margin: 4px 0 0 -20px;
+  color: $eg-yellow;
+  font-family: $eg-font-serif;
+  font-size: 1.15em;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85);
 }
 
 /* Large statement text; add .hl for the yellow highlight */
@@ -1546,6 +1605,72 @@ $presentation-h2-font-size: 1.8em;
 
 /* Photo slides: a few words centered over a full-bleed background photo.
    The photo is dimmed with background-opacity so the navy shows through. */
+.reveal #slide-11 .center-v {
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 72px 0 42%;
+  text-align: right;
+}
+
+.reveal #slide-11 .center-v .big-words {
+  max-width: 520px;
+  text-align: right;
+}
+
+.reveal #slide-12 .center-v {
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 42% 0 0px;
+  text-align: left;
+}
+
+.reveal #slide-12 .flow-words {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.reveal #slide-12 .flow-words p {
+  margin: 0;
+}
+
+.reveal #slide-12 .flow-words .big-words {
+  display: block;
+  line-height: 1.05;
+  text-align: left;
+}
+
+.reveal #slide-12 .flow-words {
+  padding-left: 2.7em;
+  margin-left: -48px;
+}
+
+.reveal #slide-12 .flow-loop {
+  position: relative;
+  display: block;
+  height: 0.32em;
+  font-size: 2.8em;
+}
+
+.reveal #slide-12 .flow-loop svg {
+  position: absolute;
+  top: -0.5em;
+  left: -0.95em;
+  width: 0.9em;
+  height: 1.32em;
+  overflow: visible;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
+}
+
+.reveal #slide-12 .flow-loop path {
+  fill: none;
+  stroke: $eg-yellow;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
 .reveal .big-words {
   margin: 0;
   max-width: 1350px;
@@ -1561,6 +1686,254 @@ $presentation-h2-font-size: 1.8em;
 
 .reveal .big-words.hl {
   color: $eg-yellow;
+}
+
+.reveal #slide-13 .center-v {
+  gap: 0;
+  padding: 0 140px;
+  background-image:
+    radial-gradient(ellipse 60% 55% at center, rgba($eg-navy, 0) 0%, $eg-navy 100%),
+    linear-gradient(rgba($eg-white, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($eg-white, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 80px 80px, 80px 80px;
+  background-position: center, center, center;
+}
+
+.reveal #slide-13 .center-v > p {
+  margin: 0;
+}
+
+.reveal #slide-13 .pmtiles-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 1.25em;
+}
+
+.reveal #slide-13 .pmtiles-title p {
+  display: contents;
+}
+
+.reveal #slide-13 .pmtiles-mark {
+  width: 1.9em;
+  height: 1.9em;
+  margin: 0;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.5));
+}
+
+.reveal #slide-13 .pmtiles-def {
+  display: block;
+  max-width: 1100px;
+  margin-top: 0.9em;
+  color: rgba($eg-white, 0.92);
+  font-family: $eg-font-serif;
+  font-size: 1.35em;
+  line-height: 1.35;
+}
+
+.reveal #slide-13 .pmtiles-source {
+  display: block;
+  margin-top: 0.7em;
+  color: rgba($eg-white, 0.5);
+  font-size: 0.6em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal #slide-13 .pmtiles-tagline {
+  display: block;
+  margin-top: 1.8em;
+  color: $eg-yellow;
+  font-family: $eg-font-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+/* Slide 13: Protomaps reference + thanks */
+.reveal #slide-14 .slide-14-thanks {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  padding: 20px 48px 0;
+  text-align: center;
+}
+
+.reveal #slide-14 .slide-14-thanks p {
+  margin: 0;
+}
+
+.reveal #slide-14 .slide-14-thanks .big-words {
+  display: inline-block;
+  max-width: none;
+  font-size: 1.5em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.reveal #slide-14 .hl-name {
+  color: $eg-yellow;
+}
+
+.reveal #slide-14 img.slide-14-shot {
+  display: block;
+  height: 700px;
+  width: auto;
+  max-width: 100%;
+  max-height: none;
+  margin: 0;
+  border-radius: 14px;
+}
+
+.reveal #slide-18 .speaker-scroll {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.4;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+
+.reveal #slide-18 .speaker-track {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 48px 36px;
+  padding: 80px 72px;
+}
+
+.reveal #slide-18.present .speaker-track {
+  animation: speaker-scroll 15s linear forwards;
+}
+
+@keyframes speaker-scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% + 900px)); }
+}
+
+.reveal #slide-18 .speaker-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.reveal #slide-18 .speaker-card img {
+  width: 150px;
+  height: 150px;
+  max-width: none;
+  max-height: none;
+  margin: 0 0 6px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+
+.reveal #slide-18 .speaker-name {
+  color: $eg-white;
+  font-family: $eg-font-sans;
+  font-size: 0.5em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.reveal #slide-18 .speaker-org {
+  color: rgba($eg-white, 0.65);
+  font-family: $eg-font-sans;
+  font-size: 0.4em;
+  line-height: 1.2;
+}
+
+.reveal #slide-18 .center-v {
+  z-index: 1;
+}
+
+.reveal #slide-18 .center-v .big-words {
+  display: inline;
+  padding: 0.08em 0.32em;
+  color: $eg-navy;
+  background: $eg-yellow;
+  border-radius: 0.14em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  text-shadow: none;
+}
+
+.reveal #slide-19 .logo-float {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.22;
+  -webkit-mask-image: radial-gradient(ellipse 38% 30% at 50% 50%, transparent 30%, #000 100%);
+  mask-image: radial-gradient(ellipse 38% 30% at 50% 50%, transparent 30%, #000 100%);
+}
+
+.reveal #slide-19 .logo-float-item {
+  position: absolute;
+  width: 150px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  translate: -50% -50%;
+  animation: logo-wave var(--dur) ease-in-out var(--delay) infinite alternate;
+}
+
+.reveal #slide-19 .logo-float-item img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.reveal #slide-19 .logo-float-item.is-badge img {
+  filter: grayscale(1) brightness(1.4);
+}
+
+.reveal #slide-19 .logo-float-item.is-wide {
+  width: 220px;
+  height: 48px;
+}
+
+@keyframes logo-wave {
+  0%   { transform: translate(-10px, 8px) rotate(calc(var(--rot) * -1)); }
+  50%  { transform: translate(0, -10px) rotate(0deg); }
+  100% { transform: translate(10px, 8px) rotate(var(--rot)); }
+}
+
+.reveal #slide-19 .center-v {
+  z-index: 1;
+}
+
+.reveal #slide-15 .slide-15-photo-wrap {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  z-index: 2;
+}
+
+.reveal #slide-15 .slide-15-photo-wrap p {
+  margin: 0;
+}
+
+.reveal #slide-15 img.slide-15-photo {
+  display: block;
+  width: 440px;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
 .reveal .big-words-sub {
@@ -1586,6 +1959,136 @@ $presentation-h2-font-size: 1.8em;
   height: auto;
   margin: 0;
   filter: drop-shadow(0 4px 28px rgba(0, 0, 0, 0.65));
+}
+
+.reveal .logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 280px);
+  gap: 22px;
+  margin-top: 1.4rem;
+}
+
+.reveal .logo-card {
+  box-sizing: border-box;
+  height: 150px;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border-radius: 16px;
+  background: $eg-base;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+}
+
+.reveal .logo-card p {
+  display: contents;
+}
+
+.reveal .logo-card img {
+  display: block;
+  max-width: 100%;
+  max-height: 88px;
+  width: auto;
+  height: auto;
+  margin: 0;
+  object-fit: contain;
+}
+
+.reveal .logo-card:has(.logo-label) img {
+  max-height: 64px;
+}
+
+.reveal .logo-label {
+  color: $eg-navy;
+  font-family: $eg-font-sans;
+  font-size: 0.8em;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.reveal #slide-17 .ei-cta {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 72px;
+  align-items: center;
+  padding: 56px 56px 72px 96px;
+}
+
+.reveal #slide-17 .ei-cta p {
+  margin: 0;
+}
+
+.reveal #slide-17 .ei-cta-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  text-align: left;
+}
+
+.reveal #slide-17 img.ei-cta-logo {
+  display: block;
+  width: 214px;
+  height: auto;
+  margin: 0 0 12px;
+}
+
+.reveal #slide-17 .ei-cta-title {
+  display: block;
+  color: $eg-white;
+  font-family: $eg-font-serif;
+  font-size: 2.6em;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.reveal #slide-17 .ei-cta-kicker {
+  display: block;
+  margin-bottom: 0.3em;
+  color: $eg-yellow;
+  font-size: 0.62em;
+}
+
+.reveal #slide-17 .ei-cta-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 0.55em 1em;
+  border-radius: 6px;
+  background: $eg-yellow;
+  color: $eg-navy;
+  font-family: $eg-font-sans;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reveal #slide-17 .ei-cta-visual {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+}
+
+.reveal #slide-17 .ei-cta-visual > p {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+}
+
+.reveal #slide-17 img.ei-cta-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
 }
 
 .reveal .qr-small {
