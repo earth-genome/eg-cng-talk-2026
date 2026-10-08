@@ -3,6 +3,7 @@ resources:
   - custom.scss
   - animations.html
   - preview-reload.html
+  - images/cng-logo.svg
 title: "From Uploads to Impact"
 subtitle: |
   [Improving Discovery with a CNG Default]{.subtitle-tagline}
